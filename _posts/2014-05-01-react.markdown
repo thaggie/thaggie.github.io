@@ -2,7 +2,7 @@
 layout: post
 title:  "React"
 date:   2014-05-01 00:20:48
-categories: JavaScript, Development
+categories:
 ---
 
 I've been experimenting with Facebook's [React](http://facebook.github.io/react/) framework. 
