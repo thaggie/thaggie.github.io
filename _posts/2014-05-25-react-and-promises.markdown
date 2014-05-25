@@ -5,6 +5,8 @@ date:   2014-05-25 01:36:48
 categories:
 ---
 
+> Update:  Thanks to [Vjeux](https://twitter.com/Vjeux) for pointing out that [React](http://facebook.github.io/react) components have a method to check it they're mounted - [isMounted](http://facebook.github.io/react/docs/component-api.html#ismounted) which I managed to miss entirely when I looked for it.
+
 This is a short post on using Facebook's [React](http://facebook.github.io/react) with [Promises](https://www.promisejs.org). I'm in the process of creating a simple App using [React](http://facebook.github.io/react) which makes use of [Promises](https://www.promisejs.org) for long running operations, what I've found is that if I get bored while they're running and navigate away to a different area of the App when the promise gets fulfilled I get errors in [React](http://facebook.github.io/react) as it's trying to update state on a now unmounted component.
 
 ```
