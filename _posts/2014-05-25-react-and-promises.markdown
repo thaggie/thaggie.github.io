@@ -39,6 +39,14 @@ var ComponentIsMountedMixin = {
 };
 ```
 
+The mixin is then used in the component:
+
+```
+... = React.createClass({
+	mixins: [ComponentIsMountedMixin],
+...
+```
+
 The mixin's version of the lifecycle methods get called before the component's so the flag is ready for use in the component making use of them.
 
 I've created a [gist](https://gist.github.com/thaggie/aed336e9e67be4696002) which shows how this works, I've used a timeout as a proxy for a call that returns a promise.
