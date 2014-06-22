@@ -5,13 +5,13 @@ date:   2014-06-21 01:36:48
 categories:
 ---
 
-I've been experimenting with [browserify][] and [gulp][] for building a [react][] project. I've now got it into a possition where it's more or less doing what I want so I thought I'd write about it.
+I've been experimenting with [browserify][] and [gulp][] for building a [react][] project. I've now got it into a position where it's more or less doing what I want so I thought I'd write about it.
 
 Previously I'd been looking at [require.js][], what I liked about it was that it could be run purely in the browser with no compile step. What I was finding was that it wasn't working out too well with browser caching and so I thought I'd spend some time looking at [browserify][] as it also has the advantage slightly less boilerplate code in each file.
 
 I had actually started with [grunt][] rather than [gulp][] but I couldn't work out how to do what I wanted so switched to [gulp][] with which I'm more familiar and who's code over configuration outlook seemed more likely to work out for what I wanted to do.
 
-> The problem I was trying to solve is that I want a fast build where only what's needed gets compiled but I also want to be able to generate itermediate components as well as the full app so they can be tested / developed in isolation.
+> The problem I was trying to solve is that I want a fast build where only what's needed gets compiled but I also want to be able to generate intermediate components as well as the full app so they can be tested / developed in isolation.
 
 With [gulp][] (since it's scripted) I can generate build tasks for each of my components so I can watch or compile individual components when needed.
 
