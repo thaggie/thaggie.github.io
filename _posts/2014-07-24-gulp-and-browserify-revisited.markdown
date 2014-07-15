@@ -6,7 +6,7 @@ date:   2014-07-14 22:50:48
 
 In my previous post I wrote about [React, Browserify & Gulp](/2014/06/20/react-and-gulp.html) since it was written [gulp-browserify][] has been [blacklisted](https://github.com/deepak1556/gulp-browserify#note-this-plugin-has-been-blacklisted) and [browserify][] has announced a [security notice](https://github.com/substack/node-browserify/blob/master/changelog.markdown#421) around one of its dependencies - syntax-error. 
 
-So in reaction I've modified my build to use browserify directly and pipe it to gulp using [vinyl-source-stream][].
+So in reaction I've modified my build to use browserify directly and pipe it to gulp using [vinyl-source-stream][]. [vinyl-source-stream][] allows the use of conventional text streams (so [browserify][]'s output) as a starting point for a gulp pipeline.
 
 Removed the rot:
 
