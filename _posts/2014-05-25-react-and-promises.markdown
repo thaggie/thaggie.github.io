@@ -2,7 +2,6 @@
 layout: post
 title:  "React & Promises"
 date:   2014-05-25 01:36:48
-categories:
 ---
 
 > **Update:**  Thanks to [Vjeux][] for pointing out that [React][] components have a method to check it they're mounted - [isMounted][] which I managed to miss entirely when I looked for it.

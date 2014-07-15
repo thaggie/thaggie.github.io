@@ -2,8 +2,19 @@
 layout: post
 title:  "React, Browserify & Gulp"
 date:   2014-06-21 01:36:48
-categories:
 ---
+
+> **Update:**  I looks like [gulp-browserify](https://www.npmjs.org/package/gulp-browserify) has been [blacklisted](https://github.com/deepak1556/gulp-browserify#note-this-plugin-has-been-blacklisted) see [Gulp &amp; Browserify Revisited](/2014/07/14/gulp-and-browserify-revisited.html) for details of the changes.
+
+```
+var buildView = function(view) {
+  return function () {
+    return browserify('./views/' + view + '.jsx')
+    .bundle().pipe(source(view + '.js'))
+    .pipe(gulp.dest('dist'));
+  };
+};
+```
 
 I've been experimenting with [browserify][] and [gulp][] for building a [react][] project. I've now got it into a position where it's more or less doing what I want so I thought I'd write about it.
 
