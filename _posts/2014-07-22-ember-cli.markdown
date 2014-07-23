@@ -1,0 +1,94 @@
+---
+layout: post
+title:  "Ember's Command Line Interface"
+date:   2014-07-22 23:50:48
+---
+
+I attended the [Vancouver Ember Meetup](http://www.meetup.com/Vancouver-Ember-js/) this evening where
+[ember-cli](https://github.com/stefanpenner/ember-cli) was introduced.
+
+Back home I thought I'd give it a try to see what it's like.
+
+Getting started, installing it...
+
+`npm install -g ember-cli`
+
+Creating a directory for the project:
+
+`mkdir emp`
+
+`cd emp`
+
+`git init`
+
+Then create the app...
+
+`ember init`
+
+This creates a bunch of files and folders:
+
+* `Brocfile.js` - the [brocolli](https://github.com/broccolijs/broccoli) build file.
+* `README.md` - TL;DR
+* `app` - The parts that makeup the app
+* `bower.json` - The [bower](http://bower.io) definition of the app, its name and dependencies.
+* `config` - A place for configuration settings, defaults to defining ENV
+* `node_modules` - Where [npm](https://www.npmjs.org/) installs stuff for the App
+* `package.json` - The [npm](https://www.npmjs.org/) defintion / dependencies.
+* `public` - Static content the App uses.
+* `testem.json` - Test setup
+* `tests` - Where the unit tests go.
+* `vendor` - Where [bower](http://bower.io) installs components.
+
+At a point like this it's good to snapshot where we're at so that we can get back to a clean slate:
+
+```
+git add .
+git commit -m "After ember init"
+```
+
+Now we can run it and see what's what:
+
+`ember serve`
+
+In your favourite browser go to: [http://0.0.0.0:4200](http://0.0.0.0:4200) - at least it came up on port 4200 on my machine.
+
+This renders a rather boring page that just says **Welcome to Ember.js**
+
+If we look under the `app` directory we can see where this comes from:
+`app/templates/application.hbs` 
+
+Bringing up the web browser's console, it reveals a whole lot of logging the App has done:
+
+```
+[ ] router:main ................................................ emp/main/router vendor.js:16672
+[✓] router:main ................................................ emp/router vendor.js:16672
+[✓] router:main ................................................ emp/router vendor.js:16672
+[ ] application:main ........................................... emp/main/application vendor.js:16672
+[ ] application:main ........................................... emp/application vendor.js:16672
+[ ] application:main ........................................... emp/applications/main vendor.js:16672
+...
+```
+
+It goes on and on and on...
+
+What I notice here is that what it's actually doing first is different from how the `ember` command has laid out the code under app.
+
+```
+...
+[ ] route:index ................................................ emp/index/route vendor.js:16672
+[ ] route:index ................................................ undefined vendor.js:16672
+[ ] route:index ................................................ emp/routes/index vendor.js:16672
+...
+```
+
+In my mind where it's looking by default is better (so I think probably ember's moved along quicker than its CLI), essentially gathering things by what they are rather than what they do. Route might not be a great example but if you're working on a component it's better not to have to flit arround between models / controllers / views directories to edit it, it's better if those artifacts are under a directory for that component.
+
+Largely the stuff under `app` is just keeping directories there with `.gitkeep` files. 
+
+Exceptions are:
+
+* `styles/app.css`
+* `templates/application.hbs`
+* `app.js`
+* `index.html`
+* `router.js`
