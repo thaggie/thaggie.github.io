@@ -39,6 +39,10 @@
 			return new RegExp(term, "ig");
 		});
 
+		// add the original query in so that exact matches get 
+		// an extra count and so rise to the top
+		regexes.push(new RegExp(query, "ig"));
+
 		posts.forEach(function(post, ordinal) {
 			var textToScan = "",
 				regex = new RegExp(query, "ig");
