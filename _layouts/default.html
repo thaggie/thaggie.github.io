@@ -17,7 +17,11 @@
 
         <div class="site">
           <div class="header">
+            <form action="{{ '/search' | prepend: site.baseurl }}" method="GET">
+              <input class="search no-print" type="text" name="query" placeholder="Search Tom's Space">
+            </form>
             <h1 class="title"><a href="/">{{ site.name }}</a></h1>
+
           </div>
 
           {{ content }}
@@ -25,10 +29,10 @@
           <div class="footer">
             <div class="contact">
               <ul>
-                <li><a href="https://github.com/thaggie">github.com/thaggie</a></li>
-                <li><a href="https://twitter.com/thaggie">twitter.com/thaggie</a></li>
-                <li><a href="https://www.linkedin.com/in/thaggie">linkedin.com/in/thaggie</a></li>
-                <li><a href="https://www.flickr.com/oddsocks">flickr.com/oddsocks</a></li>   
+                <li><a href="https://github.com/thaggie">github</a></li>
+                <li><a href="https://twitter.com/thaggie">twitter</a></li>
+                <li><a href="https://www.linkedin.com/in/thaggie">linkedin</a></li>
+                <li><a href="https://www.flickr.com/oddsocks">flickr</a></li>   
               </ul>
             </div>
             <div class="contact">
