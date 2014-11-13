@@ -18,26 +18,81 @@
 			return null;
 		}
 
+		params.query = params.query.replace(/\+/g, ' ');
+
 		return decodeURIComponent(params.query);
 
 	};
+	
 
 	var scanPosts = function(posts, properties, query) {
 
-		var results = [];
-		posts.forEach(function(post) {
+		var results = [],
+		// used to store the count and ordinal of matching posts by their link
+		matches = {},
+		// used when we iterate over the matches
+		match,
+		// split the query up into multiple search terms
+		terms = query.split(" ");
+		// each search term needs its own regular expression
+		regexes = terms.map(function(term) {
+			return new RegExp(term, "ig");
+		});
+
+		posts.forEach(function(post, ordinal) {
 			var textToScan = "",
 				regex = new RegExp(query, "ig");
-
+				
 			properties.forEach(function(property) {
 				if (post.hasOwnProperty(property)) {
 					textToScan += post[property];
 				}
 			});
 
-			if (regex.test(textToScan)) {
-				results.push(post);
+			// for the post check it against all the regexes
+			regexes.forEach(function(regex) {
+				if (regex.test(textToScan)) {
+					if (matches[post.link]) {
+						// already matched increment the count
+						matches[post.link].count++;
+					} else {
+						// new match, add a match
+						matches[post.link] = {
+							count: 1,
+							ordinal: ordinal,
+						};
+					}
+				}
+			});
+		});
+
+		// add all the matches into the results array
+		for (match in matches) {
+			if (matches.hasOwnProperty(match)) {
+				results.push(matches[match]);
 			}
+		}
+
+		// sort all the matches by their count and ordinal
+		results.sort(function (l, r) {
+			if (l.count > r.count) {
+				return -1;
+			}
+			if (l.count < r.count) {
+				return 1;
+			}
+			if (l.ordinal > r.ordinal) {
+				return 1;
+			}
+			if (l.ordinal < r.ordinal) {
+				return -1;
+			}
+			return 0;
+		});
+
+		// convert the results from matches to posts
+		results = results.map(function(match){
+			return posts[match.ordinal];
 		});
 
 		return results;
@@ -95,16 +150,14 @@
 
 		this.query = parseQueryFromURL();
 		
-		var defaultMessage = "No results found for \"" + this.query + "\"";
-		this.noResultsMessage = options.noResultsMessage || defaultMessage;
-
 		if (!this.query) {
-			return this.el.innerHTML = this.noResultsMessage;
+			return this.el.innerHTML = "No search terms specified.";
 		}
 
 		this.results = scanPosts(this.posts, this.properties, this.query);
+		
 		if (!this.results.length) {
-			return this.el.innerHTML = this.noResultsMessage;
+			return this.el.innerHTML = "No results found for \"" + this.query + "\"";
 		}
 
 		outputResults(this.query, this.results, this.el);
@@ -112,5 +165,4 @@
 	};
 
 	window.jekyllSearch = Search;
-
 })();
