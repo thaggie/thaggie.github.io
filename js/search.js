@@ -107,7 +107,7 @@
 
 		var frag = document.createDocumentFragment();
 		var pageTitle = document.createElement("h1");
-		pageTitle.innerHTML = "Search results for \"" + query + "\"";
+		pageTitle.appendChild(document.createTextNode("Search results for \"" + query + "\""));
 		frag.appendChild(pageTitle);
 		results.forEach(function(result) {
 
@@ -117,7 +117,7 @@
 			var title = document.createElement("h2");
 			var link = document.createElement("a");
 			link.href = result.link;
-			link.innerHTML = result.title;
+			link.appendChild(document.createTextNode(result.title));
 			title.appendChild(link);
 
 			div.appendChild(title);
@@ -145,7 +145,7 @@
 
 		this.posts = JEKYLL_POSTS;
 		if (!this.posts) {
-			return this.el.innerHTML = this.noResultsMessage;
+			return this.el.appendChild(document.createTextNode(this.noResultsMessage));
 		}
 
 
@@ -155,13 +155,13 @@
 		this.query = parseQueryFromURL();
 		
 		if (!this.query) {
-			return this.el.innerHTML = "No search terms specified.";
+			return this.el.appendChild(document.createTextNode("No search terms specified."));
 		}
 
 		this.results = scanPosts(this.posts, this.properties, this.query);
 		
 		if (!this.results.length) {
-			return this.el.innerHTML = "No results found for \"" + this.query + "\"";
+			return this.el.appendChild(document.createTextNode("No results found for \"" + this.query + "\""));
 		}
 
 		outputResults(this.query, this.results, this.el);
