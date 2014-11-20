@@ -44,10 +44,10 @@ a:visited { color: #964514; }
 }
 .search {
   float: right;
-  border: 1px solid #AAA;
+  border: 2px solid #DDD;
   border-radius: 6px;
   font-size: 0.8em;
-  padding: 2px 4px;
+  padding: 5px 4px 3px 4px;
   text-align: center;
 }
 
