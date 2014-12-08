@@ -60,24 +60,34 @@ If we look under the `app` directory we can see where this comes from:
 Bringing up the web browser's console, it reveals a whole lot of logging the App has done:
 
 ```
-[ ] router:main ................................................ emp/main/router vendor.js:16672
-[✓] router:main ................................................ emp/router vendor.js:16672
-[✓] router:main ................................................ emp/router vendor.js:16672
-[ ] application:main ........................................... emp/main/application vendor.js:16672
-[ ] application:main ........................................... emp/application vendor.js:16672
-[ ] application:main ........................................... emp/applications/main vendor.js:16672
+[ ] router:main .....................
+    ........................... emp/main/router vendor.js:16672
+[✓] router:main .....................
+    ........................... emp/router vendor.js:16672
+[✓] router:main .....................
+    ........................... emp/router vendor.js:16672
+[ ] application:main ................
+    ........................... emp/main/application vendor.js:16672
+[ ] application:main ................
+    ........................... emp/application vendor.js:16672
+[ ] application:main ................
+    ........................... emp/applications/main vendor.js:16672
 ...
 ```
 
+    
 It goes on and on and on...
 
 What I notice here is that what it's actually doing first is different from how the `ember` command has laid out the code under app.
 
 ```
 ...
-[ ] route:index ................................................ emp/index/route vendor.js:16672
-[ ] route:index ................................................ undefined vendor.js:16672
-[ ] route:index ................................................ emp/routes/index vendor.js:16672
+[ ] route:index .....................
+    ........................... emp/index/route vendor.js:16672
+[ ] route:index .....................
+    ........................... undefined vendor.js:16672
+[ ] route:index .....................
+    ........................... emp/routes/index vendor.js:16672
 ...
 ```
 
