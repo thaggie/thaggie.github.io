@@ -1,3 +1,5 @@
 name: Tom's Space
+author: Tom Haggie
+url: http://thaggie.github.io
 markdown: redcarpet
 highlighter: true
