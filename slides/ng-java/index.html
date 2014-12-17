@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Angular and Java</title>
+		<link rel="icon" type="image/png" href="images/dnbsolotrans.png">
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Tom Haggie">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../css/reveal.min.css">
+		<link rel="stylesheet" href="../css/theme/cic.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = '../css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-markdown>
+					<script type="text/template">
+					##Angular and Java
+					[![](images/cloud_innov_logo_RGB_72.jpg)](http://www.dnbcloud.com)
+
+					By [Tom Haggie](http://twitter.com/thaggie)
+					</script>
+				</section>
+
+				<section>
+					<h3>Desires</h3>
+					<img src="images/dynamic-vs-static.svg" height="300px" width="600px" />
+					<p>
+						We want the initial HTML payload to be dynamic so that:
+					</p>
+					<ul>
+						<li>Ajax calls return to the Java stack</li>
+						<li>Switch out to other clients for legacy systems</li>
+						<li>Non hashbang (#!) urls</li>
+					</ul>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+					###Some Wizardry
+					![](images/dropwizard-hat.png)
+					![](images/wizard_hat_blue.png)
+
+					* [Dropwizard](http://dropwizard.io) - Java microservices framework
+					* [Browserify](http://browserify.org) - JS dependency bundling
+						</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+					###Java Project Source
+					```
+					build.gradle
+					demo.yml
+					src/main/java/com/...
+					    AngularServlet.java
+					    DemoApplication.java
+					    DemoConfig.java
+					    DemoResource.java
+					src/main/resources
+					    angular-template.html
+					```
+					[drop-angular](https://github.com/thaggie/drop-angular)
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+					###Java Build
+					```groovy
+					dependencies {
+					  compile 'io.dropwizard:dropwizard-core:0.8.0-rc1'
+					  compile 'org.apache.commons:commons-io:1.3.2'
+					}
+					jar { 
+					  manifest {
+					    attributes "Implementation-Title": "Demo"
+					    attributes "Implementation-Version": "1.0"
+					    attributes "Main-Class" : "com.demo.DemoApplication"
+					  }  
+					  doFirst {
+					    from (configurations.runtime.resolve().collect 
+					      { it.isDirectory() ? it : zipTree(it) }  ) 
+					      { exclude 'META-INF/MANIFEST.MF' }
+					    }
+					  }
+					}
+					```		
+					[build.gradle](https://github.com/thaggie/drop-angular/blob/master/build.gradle)			
+					</script>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+				<h3>Browserify Boilerplate</h3>
+				<pre><code class="html">&lt;html>
+    &lt;head>
+        &lt;link rel=&quot;shortcut icon&quot; href=&quot;{static-url}/favicon.ico&quot; />
+        &lt;meta http-equiv=&quot;Content-type&quot; 
+            content=&quot;text/html; charset=utf-8&quot;/>        
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;{static-url}/css/vendor.css&quot; />
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;{static-url}/css/app.css&quot; />
+        &lt;base href="/" />
+    &lt;/head>
+    &lt;body>
+        &lt;div ui-view>&lt;/div>
+    &lt;/body>
+    &lt;script type=&quot;text/javascript&quot; src=&quot;{static-url}/vendor.js&quot;>
+    &lt;/script>
+    &lt;script type=&quot;text/javascript&quot; src=&quot;{static-url}/bundle.js&quot;>
+    &lt;/script>
+&lt;/html></code></pre>
+				<a href="https://github.com/thaggie/drop-angular/blob/master/src/main/resources/angular.html">src/main/resources/angular.html</a>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+					###Load the template into the Servlet
+					```java
+					@Override
+					public void init(ServletConfig config) throws ServletException {
+					  super.init(config);
+
+					  String staticContentUrl = config.getInitParameter(URL);
+					  ClassLoader cl = AngularServlet.class.getClassLoader();
+					  try (InputStream is = cl.getResourceAsStream("angular-template.html")) {
+					    String template = IOUtils.toString(is);
+					    staticPage = template.replace("{static-url}", staticContentUrl);
+					  } catch (IOException e) {
+					    throw new ServletException("Missing: \"angular.html\" resource", e);
+					  }
+					}
+					```
+					[src/main/java/com/demo/AngularServlet.java](https://github.com/thaggie/drop-angular/blob/master/src/main/java/com/demo/AngularServlet.java)
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+					###Configure the jax-rs application
+					```java
+					@Override
+					public void run(DemoConfig configuration, Environment environment) {
+					  MutableServletContextHandler ac = environment.getApplicationContext();
+					  ServletHolder sh = ac.addServlet(AngularServlet.klass, "/*");
+					  sh.setInitParameter(AngularServlet.URL, configuration.getUrl());
+
+					  final DemoResource demoResource = new DemoResource();
+					  environment.jersey().register(demoResource);
+
+					  DemoHealthCheck angularServletHealthCheck = new DemoHealthCheck();
+					  environment.healthChecks().register("demo", angularServletHealthCheck);
+					}
+					```
+					[src/main/java/com/demo/DemoApplication.java](https://github.com/thaggie/drop-angular/blob/master/src/main/java/com/demo/DemoApplication.java)				
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+					###Configuration Magic
+  					Here we're telling jersey that all the resource paths should be under `/api`
+  					```
+  					url: 'http://localhost:9090'
+  					server:
+  					  rootPath: /api/*
+  					```
+  					[demo.yml](https://github.com/thaggie/drop-angular/blob/master/demo.yml)
+					</script>
+				</section>
+				
+				<section data-markdown>
+					<script type="text/template">
+					####And that's it!
+					###Thanks
+
+					[http://thaggie.github.io/slides/ng-java]()
+
+					[![](images/small_cloud.png)](http://www.dnbcloud.com)
+
+					</script>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="../lib/js/head.min.js"></script>
+		<script src="../js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

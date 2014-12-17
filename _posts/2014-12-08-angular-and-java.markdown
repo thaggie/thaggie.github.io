@@ -45,7 +45,7 @@ When working with [dropwizard][2] you're using [JAX-RS][3] to annotate your reso
 public class ExampleResource {
     @GET
     @Timed
-    public SomeJsonSerializableObject example(
+    public someJsonSerializableObject example(
     	@QueryParam("aparam") Optional<String> aparam) {
     	...
         return new SomeJsonSerializableObject(...);
