@@ -54,7 +54,7 @@ td.off {
 var firstFrame = [];
 var currentFrame = firstFrame;
 var cells=[];
-var truths = ['true', 'false', '0', '0', '-0', '"true"', '"false"', '1', '0', '-1','""', 'null', 'undefined', 'Infinity', '-Infinity', '[]', '{}', '[[]]', '[0]','[1]', 'NaN'];
+var truths = ['true', 'false', '1', '0', '-0', '"true"', '"false"', '"1"', '"0"', '"-1"','""', 'null', 'undefined', 'Infinity', '-Infinity', '[]', '{}', '[[]]', '[0]','[1]', 'NaN'];
 var values = [true, false, 1, 0, -1, "true", "false", "1", "0", "-1","", null, undefined, Infinity, -Infinity, [], {}, [[]], [0], [1], NaN];
 var life = document.getElementById("life");
 var tr = document.createElement("tr");
