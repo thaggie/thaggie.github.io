@@ -232,6 +232,6 @@ clearButton.addEventListener('click', clear);
 start.addEventListener('click', toggleOn);
 
 
-//toggleOn();
+toggleOn();
 </script>
 </div>
