@@ -12,7 +12,7 @@ A simple example might be that in your application you want to display a list of
 GET /recent
 ```
 
-```
+``` js
 [
  {"id": 27, "title": "Foo"},
  {"id": 38, "title": "Bar"},
@@ -23,7 +23,7 @@ GET /recent
 
 As an application evolves the requirements change - it may be that a thumbnail is needed too...
 
-```
+``` js
 [
  {"id": 27, "title": "Foo", "thumbnail": "/static/foo.jpg"},
  {"id": 38, "title": "Bar", "thumbnail": "/static/bar.jpg"},
@@ -43,7 +43,7 @@ What [falcor][2] does is introduce a consistent scheme to facilate the access an
 
 So here's an example of how the initial query might be expressed using the [falcor][2] API on the client:
 
-```
+``` js
  model.get('recent[0..5]["id","title"]')
  .then(function(response) {
   // work with the response...
@@ -54,7 +54,7 @@ We can see that we've been able to specify both a range query and which properti
 
 Back on the server there's a router to which you add routes to deal with incoming queries, so for this route you'd add something like:
 
-```
+``` js
  {
   route: 'recent[{ranges}][{keys}]',
   get: function(pathSet) {
@@ -67,13 +67,13 @@ Back on the server there's a router to which you add routes to deal with incomin
 
 Where the `pathSet` looks like this:
 
-```
-[ 'recent', [ { to: 5, from: 0 } ], [ 'id', 'title' ] ]
+``` js
+[ "recent", [ { to: 5, from: 0 } ], [ "id", "title" ] ]
 ```
 
 And so a more rich client such as a desktop could request:
 
-```
+``` js
 get('recent[0..10]["id","title","thumbnail","author"]')
 ```
 

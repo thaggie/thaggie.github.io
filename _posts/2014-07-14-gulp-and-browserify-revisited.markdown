@@ -23,7 +23,7 @@ npm install vinyl-source-stream --save-dev
 
 Updated the `package.json` file to tell browserify to use the [reactify][] transformer (note that this was previously done in the gulp file task generator):
 
-```
+``` js
   "browserify": { 
     "transform": [ "reactify" ] 
   }
@@ -31,14 +31,14 @@ Updated the `package.json` file to tell browserify to use the [reactify][] trans
 
 Added depenencies on [vinyl-source-stream][] and [browserify][] to the `gulpfile.js`:
 
-```
+``` js
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 ```
 
 The updated task generator function:
 
-```
+``` js
 var createJsxTask = function(component) {
   return function () {
     return browserify('./components/' + component + '.jsx')

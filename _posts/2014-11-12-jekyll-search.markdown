@@ -8,7 +8,7 @@ These pages are built with [Jekyll](http://jekyllrb.com) as that's how github's 
 
 I updated the `parseQueryFromURL` function to swap `+` for space as `decodeURIComponent` doesn't handle those:
 
-```javascript
+``` js
 params.query = params.query.replace(/\+/g, ' ');
 ```
 
@@ -16,7 +16,7 @@ This then showed the next problem - it's looking for the exact term so if I sear
 
 This lead me to revise the `scanPosts` function to split up the query, match multiple terms and then stitch the results back together ordered by first the number of matches and then its ordinal as the posts are in date order and I'd expect newer posts to be more relevant - the comments are above the lines of code I've changed ([full source of my search.js](https://github.com/thaggie/thaggie.github.io/blob/master/js/search.js)).
 
-```javascript
+``` js
 var scanPosts = function(posts, properties, query) {
 
 	var results = [],

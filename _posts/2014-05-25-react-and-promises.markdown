@@ -21,7 +21,7 @@ Since I had a bunch of places I needed to do the same thing it seemed like makin
 
 Here's the code:
 
-```
+``` js
 var ComponentIsMountedMixin = {
 	componentWillMount: function() {
 		this.componentIsMounted = false;
@@ -42,7 +42,7 @@ var ComponentIsMountedMixin = {
 
 The mixin is then used in the component:
 
-```
+```  js
 ... = React.createClass({
 	mixins: [ComponentIsMountedMixin],
 ...
