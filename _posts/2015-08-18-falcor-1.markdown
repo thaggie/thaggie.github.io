@@ -79,7 +79,7 @@ get('recent[0..10]["id","title","thumbnail","author"]')
 
 The same route in the API backend would match and be able to fulfil this request without changes.
 
-What you'll note here is that the actual resource that's been recently used should live under a different route - such as `items` by their ids - in [Part 2]([here](/2015/08/20/falcor-2.html) I'll look into how this works.
+What you'll note here is that the actual resource that's been recently used should live under a different route - such as `items` by their ids - in [Part 2](/2015/08/20/falcor-2.html) I'll look into how this works.
 
 [1]:https://www.netflix.com
 [2]:https://netflix.github.io/falcor
