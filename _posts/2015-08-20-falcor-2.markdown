@@ -1,0 +1,130 @@
+---
+layout: post
+title:  "Falcor Part 2"
+date:   2015-08-20 10:01:48
+---
+
+Looking more into [Netflix][1]'s [Falcor][2], and how to work with links / references.
+
+We're wanting to make a request for the title property of a recent items for display of on the client:
+
+``` js
+model.get('recent[0..5]["title"]')
+```
+
+Now the recent items are references to items, so rather than the recent items returning the actual properties requested they return references to the items and the concrete values for the requested items:
+
+``` js
+{
+ route: 'recent[{ranges}]',
+ get: function(pathSet) {
+  var pathValues = [];
+  var ranges = pathSet[1];
+  rangeGenerator(ranges, function(index) {
+   var link = ['items', model.recent[index]];
+   pathValues.push( {
+   path: ['recent', index],
+   value: $ref(link)
+  });
+  
+  return pathValues;
+ }
+}
+```
+
+Note that in this example I'm just looking things up in a JSON data structure `model` in reality the `get` method can return a [Promise][5] or an [Observable][6] for asynchronous tasks.
+
+Additionally we need a route to serve the items themselves:
+
+``` js
+{
+ route: 'items[{ranges}][{keys}]',
+ get: function(pathSet) {
+  var pathValues = [];
+  var ranges = pathSet[1];
+  var props = pathSet[2];
+  rangeGenerator(ranges, function(index) {
+   var item  = model.items[index];
+   props.forEach(function(prop) { 
+    pathValues.push( {
+     path: ['items', index, prop],
+     value: item[prop]
+    });
+   });
+  });
+  return pathValues;
+ }
+}
+
+```
+
+`rangeGenerator` here is just a function to map across an array of ranges:
+
+``` js
+var rangeGenerator = function(ranges, fn) {
+ var vals = [];
+ for (var ri = 0; ri < ranges.length; ++ri) {
+  var range = ranges[ri];
+  for (var i = range.from; i <= range.to; ++i) {
+   var val = fn(i);
+   vals.push(val);
+  }
+ }
+ return vals;
+};
+```
+
+The result of our call from the client is a json that looks like this:
+
+``` json
+{
+ "recent" : {
+  "0" : {
+   "name" : "Bear"
+  }, 
+  "1" : {
+   "name" : "Duck"
+  }
+ }
+}
+```
+
+Now here we see an example of what made me throw up a bit in myt mouth when first first hearing about [falcor][2] - arrays are returned as objects with their indices as keys. This is because arrays are always used to represent references but also makes sense (and how I reconcile this hack in my mind) in that when you're dealing with pages of data in a collection the item's index in the array isn't its identity position (so if I'd asked for `recent[6..10]["title"]`).
+
+I think it's also instructive to look at the actual HTTP response JSON:
+
+``` json
+{
+ "jsonGraph" : {
+  "recent" : {
+   "0" : {
+    "$type" : "ref",
+    "value" : ["items", 1]
+   },
+   "1" : {
+    "$type" : "ref",
+    "value" : ["items", 3]
+   }
+  },
+  "items" : {
+   "1" : {
+    "name" : "Bear"
+   },
+   "3" : {
+    "name" : "Duck"
+   }
+  }
+ }
+}
+```
+
+We can see how the references are passed down in the response along with the data they're referencing. Also we can see what I was talking about in terms of how having a map by index (rather than an array) works out nicely as items 0 and 2 have no data and so are not a part of the response. 
+
+I'm thankful for [Jafar Husain][4]'s help with my understanding of how references work in [falcor][2] while putting this post together - I initially thought that the property requests had to be matched in the route which would have made for very tedious / brittle code.
+
+[1]:https://www.netflix.com
+[2]:https://netflix.github.io/falcor
+[3]:https://en.wikipedia.org/wiki/Representational_state_transfer
+[4]:https://github.com/jhusain
+[5]:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[6]:http://reactivex.io/documentation/observable.html
