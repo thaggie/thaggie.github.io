@@ -89,7 +89,7 @@ The result of our call from the client is a json that looks like this:
 }
 ```
 
-Now here we see an example of what made me throw up a bit in myt mouth when first first hearing about [falcor][2] - arrays are returned as objects with their indices as keys. This is because arrays are always used to represent references but also makes sense (and how I reconcile this hack in my mind) in that when you're dealing with pages of data in a collection the item's index in the array isn't its identity position (so if I'd asked for `recent[6..10]["title"]`).
+Now here we see an example of what made me throw up a bit in myt mouth when first first hearing about [Falcor][2] - arrays are returned as objects with their indices as keys. This is because arrays are always used to represent references but also makes sense (and how I reconcile this hack in my mind) in that when you're dealing with pages of data in a collection the item's index in the array isn't its identity position (so if I'd asked for `recent[6..10]["title"]`).
 
 I think it's also instructive to look at the actual HTTP response JSON:
 
@@ -120,7 +120,7 @@ I think it's also instructive to look at the actual HTTP response JSON:
 
 We can see how the references are passed down in the response along with the data they're referencing. Also we can see what I was talking about in terms of how having a map by index (rather than an array) works out nicely as items 0 and 2 have no data and so are not a part of the response. 
 
-I'm thankful for [Jafar Husain][4]'s help with my understanding of how references work in [falcor][2] while putting this post together - I initially thought that the property requests had to be matched in the route which would have made for very tedious / brittle code.
+I'm thankful for [Jafar Husain][4]'s help with my understanding of how references work in [Falcor][2] while putting this post together - I initially thought that the property requests had to be matched in the route which would have made for very tedious / brittle code.
 
 [1]:https://www.netflix.com
 [2]:https://netflix.github.io/falcor
