@@ -4,7 +4,7 @@ title:  "Falcor Part 2"
 date:   2015-08-20 10:01:48
 ---
 
-Looking more into [Netflix][1]'s [Falcor][2], and how to work with links / references.
+Looking more into [Netflix][1]'s [Falcor][2], and how to work with links / references, this follows on from my initial look at [Falcor][2] [here](/2015/08/18/falcor-1.html).
 
 We're wanting to make a request for the title property of a recent items for display of on the client:
 
