@@ -1,10 +1,10 @@
 ---
-laytout: post
+layout: post
 title:  "Falcor Part 1"
 date:   2015-08-18 00:30:48
 ---
 
-I've been looking at [Netflix][1]'s [Falcor][2] it's an attempt to solve one of the problems with [REST][3] APIs which is to do with granularity. When creating an application you often want to work with resources at a highly granular level (individual properties) rather than in terms of whole documents and that for some operations you need information about many resources but you don't want to make multiple calls accross the wire for the information from each resource. 
+I've been looking at [Neflix][1]'s [falcor][2] it's an attempt to solve one of the problems with [REST][3] APIs which is to do with granularity. When creating an application you often want to work with resources at a highly granular level (individual properties) rather than in terms of whole documents and that for some operations you need information about many resources but you don't want to make multiple calls accross the wire for the information from each resource. 
 
 A simple example might be that in your application you want to display a list of recent items with a title and a link. 
 
@@ -36,12 +36,12 @@ And then the item owner's wanted to be displayed as a tooltip (or some such).
 
 Each time a feature is added the property needs adding to the endpoint - meaning extra backend development.
 
-Then if the endpoint is used by multiple clients say web vs mobile where the amount of data needs to be reduced for bandwidth / machine capabilty a scheme might be added to specify which properties are wanted, this is not restful, creates complexity (different APIs have different schemes) and is again more backend work needed for new client tcode.
+Then if the endpoint is used by multiple clients say web vs mobile where the amount of data needs to be reduced for bandwidth / machine capabilty a scheme might be added to specify which properties are wanted, this is not restful, creates complexity (different APIs have different schemes) and is again more backend work needed for new client code.
 
-What [Falcor][2] does is introduce a consistent scheme to facilate the access and manipulation of granular data trying not to throw the baby out with the bathwater in terms of keeping things cache friendly.
+What [falcor][2] does is introduce a consistent scheme to facilate the access and manipulation of granular data trying not to throw the baby out with the bathwater in terms of keeping things cache friendly.
 
 
-So here's an example of how the initial query mightt be expressed using the [Falcor][2] API on the client:
+So here's an example of how the initial query might be expressed using the [falcor][2] API on the client:
 
 ``` js
  model.get('recent[0..5]["id","title"]')
