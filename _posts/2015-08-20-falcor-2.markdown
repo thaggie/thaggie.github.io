@@ -89,7 +89,7 @@ The result of our call from the client is a json that looks like this:
 }
 ```
 
-Now here we see an example of what made me throw up a bit in my mouth when first hearing about [Falcor][2] - arrays are returned as objects with their indices as keys. This is because arrays are always used to represent references. This does make some sense (and how I reconcile this hack in my mind) in that when you're dealing with pages of data in a collection the item's index in the array isn't its identity position (so if I'd asked for `recent[6..10]["title"]`).
+Now here we see an example of what made me throw up a bit in my mouth when first hearing about [Falcor][2] - arrays are returned as objects with their indices as keys. This is because internally arrays are always used to represent references. This does make some sense (and how I reconcile this hack in my mind) in that when you're dealing with pages of data in a collection the item's index in the array isn't its identity position (so if I'd asked for `recent[6..10]["title"]`).
 
 I think it's also instructive to look at the actual HTTP response JSON:
 
