@@ -1,4 +1,4 @@
----
+-"--
 layout: post
 title:  "Falcor Part 1"
 date:   2015-08-18 00:30:48
@@ -27,7 +27,7 @@ As an application evolves the requirements change - it may be that a thumbnail i
 [
  {"id": 27, "title": "Foo", "thumbnail": "/static/foo.jpg"},
  {"id": 38, "title": "Bar", "thumbnail": "/static/bar.jpg"},
- {"id": 97, "title": "Baz", "thumbnail": "/static/baz.jpg},
+ {"id": 97, "title": "Baz", "thumbnail": "/static/baz.jpg"},
  ...
 ]
 ```
