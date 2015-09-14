@@ -3,3 +3,6 @@ author: Tom Haggie
 url: http://thaggie.github.io
 markdown: redcarpet
 highlighter: pygments
+collections:
+  slides:
+    output: true

@@ -1,0 +1,16 @@
+---
+layout: default
+title: Slide Decks
+---
+
+<h2>{{ page.title }}</h2>
+
+<div class="slides">
+  <dl>
+    {% for slides in site.slides %}
+      <dt><a href="{{ slides.url }}">{{ slides.title }}</a></dt>
+      <dd>{{ slides.description }}</dd>
+      </li>
+    {% endfor %}
+  </dl>
+</div>

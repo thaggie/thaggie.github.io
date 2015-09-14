@@ -91,6 +91,16 @@ a:visited { color: #964514; }
   font-size: 80%;
 }
 
+div.slides {
+  margin-bottom: 0.5em;
+}
+
+.slides dd  {
+  font-size: 0.9em;
+  margin-left: 1em;
+  margin-bottom: 0.5em;
+}
+
 /*****************************************************************************/
 /*
 /* Site
