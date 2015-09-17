@@ -11,7 +11,7 @@ So this-evening I moved it up to [github](https://github.com/thaggie/page-shaver
 Just drag the link below to your bookmarks bar and then click on it improve the readability of the page:
 
 <div style="text-align: center; ">
-<a style="background-color: #EEE;border: 1px solid #999; border-radius: 4px; padding: 4px 8px; box-shadow: 5px 5px 5px #888;" href="javascript:(function(){var%20tag%20=%20document.createElement('script');tag.setAttribute('type','text/javascript');tag.setAttribute('src','//rawgithub.com/thaggie/page-shaver/master/ps.js');document.head.appendChild(tag);})();">Shaver</a>
+<a style="background-color: #EEE;border: 1px solid #999; border-radius: 4px; padding: 4px 8px; box-shadow: 5px 5px 5px #888;" href="javascript:(function(){var%20tag%20=%20document.createElement('script');tag.setAttribute('type','text/javascript');tag.setAttribute('src','//rawgit.com/thaggie/page-shaver/master/ps.js');document.head.appendChild(tag);})();">Shaver</a>
 </div>
 
 You can just click on it to test it on this page (not very exciting as these pages are already fairly minimal). It worked without modification on the site that kicked this off: [The Definitive Guide to Web Character Encoding](http://www.sitepoint.com/guide-web-character-encoding)
