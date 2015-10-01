@@ -1,5 +1,5 @@
 ---
-layout: cv
+layout: doc
 title:  "Tom Haggie - Curriculum Vitae"
 date:   2014-05-25 01:36:48
 ---
@@ -9,7 +9,7 @@ date:   2014-05-25 01:36:48
 ### [Dun & Bradstreet][dnb] *(purchased [Indicee][indicee])*
 #### May 2014 – September 2015 *(Vancouver)*
 
-Joined [Dun & Bradstreet][dnb] as a Senior Software Architect when they bought Indicee. Grew my team from 3 to 10. Worked with multiple teams to design and build an application for Risk Management integrating data from D&B and other sources, using [Indicee][indicee] for analytics. The user interface was built using [Angular][angular], the backend services were built using [Java][java] calling into a number of different REST services, [Postgres][postgres] as the datastore, and [Redis][redis] for caching.
+Joined [Dun & Bradstreet][dnb] as a Senior Software Architect when they bought Indicee. Grew my team from 3 to 10. Worked with multiple teams in multiple locations to design and build an application for Risk Management integrating data from [D&B][dnb] and other sources, using [Indicee][indicee] for analytics. The user interface was built using [Angular][angular], the backend services were built using [Java][java] calling into a number of different REST services, [Postgres][postgres] as the datastore, having [DynamoDB][dynamo-db] as a part for the data pipeline and [Redis][redis] for caching. The [Java][java] backend was built as a containerless web application using [Dropwizard][dropwizard], with [Hibernate][hibernate] for ORM and [RxJava][rx-java] for evented IO in a functional reactive style of programming. 
 
 ### [Indicee][indicee]
 #### October 2011 – May 2014 *(Vancouver)*
@@ -99,6 +99,10 @@ Third year project was a simulator for the investigation of [emergent behaviour]
 [java]: https://www.java.com
 [postgres]: http://www.postgresql.org
 [redis]: http://redis.io
+[dropwizard]: http://www.dropwizard.io
+[hibernate]: http://hibernate.org
+[rx-java]: https://github.com/ReactiveX/RxJava
+[dynamo-db]: https://aws.amazon.com/dynamodb
 [indicee-api]: http://dev.indicee.com
 [php]: http://php.net
 [mysql]: https://www.mysql.com

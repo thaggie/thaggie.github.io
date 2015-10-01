@@ -61,6 +61,13 @@ a:visited { color: #964514; }
     code {
       font-size: 10pt;
     }
+/*
+    a:link:after, 
+    a:visited:after { 
+      content: " (" attr(href) ") "; 
+      font-size: 90%; 
+    }
+*/    
 }
 .search {
   float: right;
