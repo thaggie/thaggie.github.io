@@ -2,6 +2,7 @@
 layout: doc
 title:  "The English Family at Beamish"
 date:   2014-05-25 01:36:48
+author: Wilfrid Elliott English
 ---
 
 The earliest definite record is the marriage of John English to Elizabeth Derham in 1740, but it is quite possible that he was the son of John English to whom a daughter was born, Jane, in 1721.
