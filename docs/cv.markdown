@@ -122,6 +122,7 @@ Third year project was a simulator for the investigation of [emergent behaviour]
 [haskell]: https://www.haskell.org
 [js]: https://en.wikipedia.org/wiki/JavaScript
 [jquery]: https://jquery.com/
+[jdbc]: http://www.oracle.com/technetwork/java/javase/jdbc/index.html
 [cal]: https://en.wikipedia.org/wiki/Quark_Framework#CAL
 [epm]: https://en.wikipedia.org/wiki/Enterprise_performance_management
 [cpp]: https://isocpp.org
