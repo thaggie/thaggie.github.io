@@ -18,13 +18,13 @@ Joined Indicee to start the Application Team, which was responsible for creating
 
 Sample Projects:
 
-* Sales Pipeline analytics, comparing time windows of the sales pipeline.
 * [Indicee Analytics for Salesforce Apps][ia4c] - custom dashboards for analyzing Salesforce data such as looking at opportunities, Chatter, and file usage.
-* Indicee Agency. 
-* Salesforce Data Connector - using [Salesforce's SOAP API][salesforce-api].
-* Relational Data Connectors - synchronizing data from local databases to Indicee in the cloud.
-* Multi-screen Chatter Analytics wall display for Salesforce for [Dreamforce][dreamforce] 2012 - a live analytical dashboard of Saleforce Chatter posts and comments.
-* iPad App for viewing Indicee dashboards - built as a native App for dashboard selection hosting the dashboards in a [UIWebView][uiwebview].
+* Salesforce Data Connector - Importing Salesforce data into [Indicee][indicee] using [Salesforce's SOAP API][salesforce-api] and the [Indicee REST API][indicee-api].
+* Relational Data Connectors - synchronizing data from local databases to Indicee in the cloud via [JDBC][jdbc] and the [Indicee REST API][indicee-api].
+* Multi-screen Chatter Analytics wall display for Salesforce for [Dreamforce][dreamforce] 2012 - a live analytical dashboard of Saleforce Chatter posts and comments, built with [jQuery][jquery].
+* [iPad][ipad] App for viewing Indicee dashboards - built as a native App for dashboard selection hosting the dashboards in a [UIWebView][uiwebview].
+* Created a simplified query builder in [React][react] suitable (low memory footprint + touch interface) for use to be used on the [iPad][ipad] 2.
+* Added extra [jqPlot][jqPlot] visualizations to [Indicee][indicee]'s [GWT][gwt] client.
 
 ### [SAP][sap] *(purchased [Business Objects][bo])*
 #### August 2010 – October 2011 *(Vancouver)*
@@ -108,6 +108,9 @@ Third year project was a simulator for the investigation of [emergent behaviour]
 [mysql]: https://www.mysql.com
 [salesforce-api]: https://developer.salesforce.com/docs/atlas.en-us.api.meta/api
 [uiwebview]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIWebView_Class/index.html
+[jqPlot]: http://www.jqplot.com
+[ipad]: https://www.apple.com/ipad
+[react]: https://facebook.github.io/react
 [bi-on-demand]: http://scn.sap.com/community/businessobjects-bi-ondemand
 [sql]: https://en.wikipedia.org/wiki/SQL
 [mdx]: http://mdxquery.com/
