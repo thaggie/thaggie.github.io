@@ -18,7 +18,7 @@ Joseph 1780, Fenwick 1781, Willian 1782, George 1785, Baxter 1788, Robert 1790, 
 Our side of the family all descend from Baxter. He married Mary Pickering in 1815 and had seven 
 children of whom the fourth, Thomas, was the only one to marry, namely Elizabeth Johnson.
 
-The offspring of that marriage were Joseph, 1859, my grandfather, Robert Johnson 1860, and Baxter 
+The offspring of that marriage were [Joseph](joseph-english.html), 1859, my grandfather, Robert Johnson 1860, and Baxter 
 1862, who died in infancy.
 
 Thomas and Elizabeth both died young, and the two sones were brought up first by the grandparents, 
