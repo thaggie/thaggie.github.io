@@ -17,6 +17,14 @@ permalink: /search/
 		content: "{{ post.content | strip_newlines | strip_html }}"
 	}); 
     {% endfor %}
+
+	{% for doc in site.docs %}
+	JEKYLL_POSTS.push({
+		title: "{{ doc.title }}",
+		link: "{{ doc.url | prepend: site.baseurl }}",
+		content: "{{ doc.content | strip_newlines | strip_html }}"
+	}); 
+    {% endfor %}    
 </script>
 <script src="{{ "/js/search.js" | prepend: site.baseurl }}"></script>
 <script>

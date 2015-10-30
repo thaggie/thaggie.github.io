@@ -1,10 +1,10 @@
 ---
 layout: doc
-title:  "Tom Haggie - Curriculum Vitae"
-date:   2014-05-25 01:36:48
+title: Tom Haggie 
 ---
 
-## Employment Record
+<thaggie@gmail.com>
+
 
 ### [Dun & Bradstreet][dnb] *(purchased [Indicee][indicee])*
 #### May 2014 – September 2015 *(Vancouver)*
@@ -18,7 +18,6 @@ Joined Indicee to start the Application Team, which was responsible for creating
 
 Sample Projects:
 
-* [Indicee Analytics for Salesforce Apps][ia4c] - custom dashboards for analyzing Salesforce data such as looking at opportunities, Chatter, and file usage.
 * Salesforce Data Connector - Importing Salesforce data into [Indicee][indicee] using [Salesforce's SOAP API][salesforce-api] and the [Indicee REST API][indicee-api].
 * Relational Data Connectors - synchronizing data from local databases to Indicee in the cloud via [JDBC][jdbc] and the [Indicee REST API][indicee-api].
 * Multi-screen Chatter Analytics wall display for Salesforce for [Dreamforce][dreamforce] 2012 - a live analytical dashboard of Saleforce Chatter posts and comments, built with [jQuery][jquery].
