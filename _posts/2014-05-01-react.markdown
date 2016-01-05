@@ -4,6 +4,8 @@ title:  "React"
 date:   2014-05-01 00:20:48
 ---
 
+> **Update:** The world has moved on, typically you'll want to use [browserify](http://browserify.org) or [webpack](https://webpack.github.io/), I have updated the [example repository](https://github.com/thaggie/react-tut) to work via [npm](https://www.npmjs.com/) rather than with a lib directory and with a much newer version of react.
+
 I've been experimenting with Facebook's [React](http://facebook.github.io/react/) framework. 
 I spent a little time working out how to use it with [require.js](http://requirejs.org/) and so
 thought I'd write a little on how that went. I was interested in getting [require.js](http://requirejs.org/) to 
