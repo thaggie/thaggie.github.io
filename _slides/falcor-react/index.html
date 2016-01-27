@@ -1,0 +1,329 @@
+---
+layout: slides
+title:  "Falcor & React"
+description: "Looking at using Netflix' Falcor in a React App."
+css: "../css/theme/splunk.css"
+icon: "//www.splunk.com/content/dam/splunk2/images/icons/favicons/favicon-32x32.png"
+---
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+	<section data-markdown>
+		<script type="text/template">
+		##Falcor & React
+		[![](images/hero-banner-logo.svg)](https://netflix.github.io/falcor)
+
+		By [Tom Haggie](http://twitter.com/thaggie)
+		</script>
+	</section>
+
+	<section data-markdown>
+		<script type="text/template">
+		### Outline
+
+		* What problem is [Falcor][] solving?
+		* How does [Falcor][] work?
+		* Integrating [Falcor][] and [React][]
+		* What's [Falcor][] not going to help you with?
+
+		[falcor]: https://netflix.github.io/falcor
+		[react]: https://facebook.github.io/react
+
+		</script>
+	</section>
+
+	<section>
+		<section data-markdown>
+
+			<script type="text/template">
+			### What problem is [Falcor][] solving?
+
+			[falcor]: https://netflix.github.io/falcor
+
+			</script>
+		</section>
+		<section data-markdown>
+			<script type="text/template">
+			### Problems with REST
+
+			* Resource Granularity
+			* Paging
+			* Batching
+
+			[falcor]: https://netflix.github.io/falcor
+
+			</script>
+
+		</section>
+	</section>
+
+	<section>
+		<section data-markdown>
+			<script type="text/template">
+			### How does [Falcor][] work?
+			[falcor]: https://netflix.github.io/falcor
+			</script>
+		</section>
+
+		<section >
+			<a href="http://netflix.github.io/falcor/starter/what-is-falcor.html">
+				<img height="600px" src="images/falcor-end-to-end.png" />
+			</a>
+		</section>
+				
+
+	<section data-markdown>
+		<script type="text/template">
+		## JSON Graph
+
+		Serialized JSON is a tree structure, JSON Graph is a way of representing a graph in a tree structure.
+
+		
+```js
+"user": {
+	$type: "ref"
+	value: ["people", "2"]
+}
+```		
+		JSON Graph does this by creating links between nodes.
+		
+		So how do we represent arrays?
+		</script>
+	</section>
+
+<section data-markdown>
+		<script type="text/template">
+		An array is represented as an `object`.
+
+		
+```js
+"people": {
+	"1": {"name": "Ice Cube", "role": "Developer"},
+	"2": {"name": "Kevin Hart", "role": "QA Engineer"},
+	...
+}
+```		
+	
+		</script>
+	</section>	
+
+<section data-markdown>
+		<script type="text/template">
+		### Querying
+
+```
+bugs[1..20].raisedBy["name","role","thumbnail"]
+```		
+	
+		</script>
+	</section>	
+
+<section data-markdown>
+		<script type="text/template">
+		### [Demo](http://localhost:3000)
+		</script>
+		</section>
+	</section>
+
+<section>
+
+	<section data-markdown>
+		<script type="text/template">
+		### Integrating [Falcor][] and [React][]
+
+		[falcor]: https://netflix.github.io/falcor
+		[react]: https://facebook.github.io/react
+
+		</script>
+	</section>
+
+		<section data-markdown>
+			<script type="text/template">
+			#### [package.json](https://github.com/thaggie/react-falcor/blob/master/package.json)
+			```javascript
+"devDependencies": {
+    ...
+    "falcor": "^0.1.15",
+    "falcor-express": "^0.1.2",
+    "falcor-http-datasource": "^0.1.2",
+    "falcor-json-graph": "^1.1.7",
+    "falcor-router": "^0.2.12",
+    ...
+  },
+			```
+			</script>
+		</section>
+
+		<section data-markdown>
+			<script type="text/template">
+			#### [main.js](https://github.com/thaggie/react-falcor/blob/master/js/main.js)
+
+			```jsx
+import React from 'react';
+import ReactDom from 'react-dom';
+
+import Falcor from 'falcor';
+import FalcorDataSource from 'falcor-http-datasource';
+
+import App from './App';
+
+const renderApp = function (
+	ReactDom.render(<App model={model}/>, document.getElementById('app'));
+}
+
+const model = new Falcor.Model({
+    source: new FalcorDataSource('/model.json'),
+    onChange: renderApp
+}).batch();
+		
+```
+			</script>
+		</section>
+		
+		<section data-markdown>
+			<script type="text/template">
+			#### [BugTable.js](https://github.com/thaggie/react-falcor/blob/master/js/BugTable.js)
+
+			```jsx
+			componentDidMount: function() {
+	this.props.model.get(
+		'bugs[1..20].raisedBy["name","role","thumbnail"]', 
+		'bugs[1..20].["id", "title"]')
+	.then((response) => {
+		this.setState({'bugs': response.json.bugs});
+	});
+},
+```
+			</script>
+		</section>
+
+		<section data-markdown>
+			<script type="text/template">
+			#### [BugTable.js](https://github.com/thaggie/react-falcor/blob/master/js/BugTable.js)
+
+			```jsx
+render: function() {
+    const rows = _.map(this.state.bugs, function(bug) {
+        const raisedByInfo = bug.raisedBy.name + '\n' + bug.raisedBy.role;
+        return (<tr key={bug.id}>
+            <td key="image">
+                <PersonIcon {...bug.raisedBy} /> 
+            </td>
+            <td key="title">{bug.title}</td>
+        </tr>);
+    });
+    return (<table className="bug-table">
+        <tbody>{rows}</tbody>
+    </table>);
+}
+```
+			</script>
+		</section>
+
+		<section data-markdown>
+			<script type="text/template">
+			#### [server.js](https://github.com/thaggie/react-falcor/blob/master/server.js) - imports
+
+			```js
+var falcorExpress = require('falcor-express');
+var Router = require('falcor-router');
+var falcor = require('falcor');
+var $ref = falcor.Model.ref;
+
+var express = require('express');
+
+```
+			</script>
+		</section>	
+
+		<section data-markdown>
+			<script type="text/template">
+			#### [server.js](https://github.com/thaggie/react-falcor/blob/master/server.js) - routes
+
+			```js
+app.use('/model.json', falcorExpress.dataSourceRoute(function (req, res) {
+  return new Router([{
+      route: 'user',
+      get: getItem(database.user)
+    }, {
+      route: 'bugs[{ranges}][{keys}]',
+      get: getItems(database.bugs, {'raisedBy': 'people'})
+    }, {
+      route: 'people[{ranges}][{keys}]',
+      get: getItems(database.people)
+    }
+  ]);
+}));```
+			</script>
+		</section>
+
+		<section data-markdown>
+			<script type="text/template">
+			#### [server.js](https://github.com/thaggie/react-falcor/blob/master/server.js) - getItems
+
+			```js
+var getItems = function(dataPromise, links) {
+  return function(pathSet) {
+    var ranges = pathSet[1];
+    return dataPromise.then(function(data) {
+      var pathValues = [];
+      rangeGenerator(ranges, addPathValues(data, pathSet, links, pathValues));
+      return pathValues;
+    });
+  }
+};
+```
+			</script>
+		</section>						
+
+		<section data-markdown>
+			<script type="text/template">
+			#### [server.js](https://github.com/thaggie/react-falcor/blob/master/server.js) - getItems
+
+			```js
+var addPathValues = function(data, pathSet, links, pathValues) {
+  return function (index) {
+    var props = pathSet[2];
+    var item = data['' + index];
+    props.forEach(function(prop) { 
+      var value = item[prop];
+      if (links && links[prop]) {
+        value = $ref([links[prop], value]);
+      }
+      pathValues.push( {
+        path: [pathSet[0], index, prop],
+        value: value
+      });
+    });
+  };  
+};
+```
+			</script>
+		</section>		
+</section>
+<section>
+	<section data-markdown>
+		<script type="text/template">
+		### What's [Falcor][] not going to help you with?
+
+		* Publishing your API / schema
+		* Realtime collaboration
+
+		[falcor]: https://netflix.github.io/falcor
+		[react]: https://facebook.github.io/react
+
+		</script>
+	</section>
+</section>
+
+	<section data-markdown>
+		<script type="text/template">
+		###The End
+
+		[https://github.com/thaggie/react-falcor]()
+
+		</script>
+	</section>
+
+</div>
+

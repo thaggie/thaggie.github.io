@@ -4,7 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 		<title>{{ page.title | xml_escape }}</title>
-		<link rel="icon" type="image/png" href="images/dnbsolotrans.png">
+
+		<link rel="icon" type="image/png" href="{{ page.css | xml_escape }}">
+	
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="{{ site.author }}">
 		<meta name="copyright" content="{{ site.author }} {{ site.time | date: '%Y' }}">
@@ -15,7 +17,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="../css/reveal.min.css">
-		<link rel="stylesheet" href="../css/theme/cic.css" id="theme">
+		<link rel="stylesheet" href="{{ page.css | xml_escape }}" id="theme">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="../lib/css/zenburn.css">
