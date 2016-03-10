@@ -135,6 +135,10 @@ div.slides {
   background-color: white;
 }
 
+body {
+  padding: 8px;
+}
+
 @media screen {
   .site {
     border: solid 3px #6F4242;

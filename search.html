@@ -4,6 +4,7 @@ title: Search
 permalink: /search/
 ---
 
+
 <div id="results">
 	
 </div>
@@ -14,7 +15,7 @@ permalink: /search/
 	JEKYLL_POSTS.push({
 		title: "{{ post.title }}",
 		link: "{{ post.url | prepend: site.baseurl }}",
-		content: "{{ post.content | strip_newlines | strip_html }}"
+		content: {{ post.content | markdownify | strip_html | jsonify }}
 	}); 
     {% endfor %}
 
@@ -22,7 +23,7 @@ permalink: /search/
 	JEKYLL_POSTS.push({
 		title: "{{ doc.title }}",
 		link: "{{ doc.url | prepend: site.baseurl }}",
-		content: "{{ doc.content | strip_newlines | strip_html }}"
+		content: {{ doc.content | markdownify | strip_html | jsonify }}
 	}); 
     {% endfor %}    
 </script>

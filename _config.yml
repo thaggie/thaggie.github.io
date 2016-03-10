@@ -1,8 +1,6 @@
 name: Tom's Space
 author: Tom Haggie
-url: http://thaggie.github.io
-markdown: redcarpet
-highlighter: pygments
+url: http://haggie.ca
 collections:
   slides:
     output: true
