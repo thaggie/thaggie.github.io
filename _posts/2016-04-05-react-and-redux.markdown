@@ -38,7 +38,7 @@ So the line would need changing to something like this:
 const { selectedSubreddit, postsBySubreddit } = state.present
 ```
 
-Similarly by embedding asynchronous calls in the actions where again the `getState` function of [redux-thunk] returns the global application state it make their code brittle to changes and awkward for unit testing when you're wanting to test the reducer / actions in isolation from the usage environment (the state paths will be wrong).
+Similarly by embedding asynchronous calls in the actions where again the `getState` function of [redux-thunk] returns the global application state makes the code brittle to changes and awkward for unit testing when you're wanting to test the reducer / actions in isolation from the usage environment (the state paths will be wrong).
 
 Also if you want to re-use any of these [Smart Components][smart-components] or asynchronous action factories in other projects you're out of luck it the state paths aren't identical.
 
