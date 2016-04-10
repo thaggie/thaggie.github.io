@@ -30,7 +30,7 @@ function mapStateToProps(state) {
 ```
 [source](http://redux.js.org/docs/advanced/ExampleRedditAPI.html#-containers-asyncapp-js)
 
-So for instance if you were to try to introduce [undo / redo](https://github.com/omnidan/redux-undo) as a wrapping reducer all your smart components will need to be modified to cope with the changes to where in the state their business properties are.
+So for instance if you were to try to introduce [undo / redo](https://github.com/omnidan/redux-undo) as a wrapping reducer all your [smart components][smart-components] will need to be modified to cope with the changes to where in the state their business properties are.
 
 So the line would need changing to something like this:
 
