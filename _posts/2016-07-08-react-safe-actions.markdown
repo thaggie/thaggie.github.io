@@ -59,8 +59,7 @@ var myAction = rsa.create('MY_ACTION_TYPE', {
 This is creating a function which will in turn create the actions. The function
 will check the payload passed in to make sure it conforms to the schema passed
 in (unless `NODE_ENV` is `production`), so catching the error **before**
-generating the action which will it get passed to the dispatcher. The function
-will return a [flux standard action][fsa].
+generating the action. The function will return a [flux standard action][fsa].
 
 ```js
 var action1 = myAction(); // BAD
