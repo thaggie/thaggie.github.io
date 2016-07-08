@@ -56,10 +56,11 @@ var myAction = rsa.create('MY_ACTION_TYPE', {
 });
 ```
 
-This is creating a function which will un turn create the actions. The function
+This is creating a function which will in turn create the actions. The function
 will check the payload passed in to make sure it conforms to the schema passed
-in, so catching the error **before** generating the action which will it get
-passed to the dispatcher. The function will return a [flux standard action][fsa].
+in (unless `NODE_ENV` is `production`), so catching the error **before**
+generating the action which will it get passed to the dispatcher. The function
+will return a [flux standard action][fsa].
 
 ```js
 var action1 = myAction(); // BAD
@@ -80,8 +81,6 @@ var myAction = rsa.create('MY_ACTION_TYPE', {
 var action2 = myAction('ok');
 // { type: 'MY_ACTION_TYPE', payload: {foo: 'ok'} }
 ```
-
-When the `NODE_ENV` is `production` the tests aren not applied.
 
 It's only 40 or so lines of code but I've still put the [source] up on [github]
 and published a module to [npm] as I think others may find it useful.
