@@ -87,6 +87,30 @@ and published a module to [npm] as I think others may find it useful.
 I've updated the [redux][redux] [ToDo MVC][todomvc] example app, to show how the
 library works in practice, you can see the change list [here][todo-changes].
 
+When I first made the changes I made a mistake, with source maps turned on this
+how the error looks in the console:
+
+
+
+![Error: Required prop `id` was not specified in `EDIT_TODO`.](/images/react-safe-actions-error-log.png)
+
+You can see that it's reporting which property is missing from which action and
+with source maps enabled we can see the exact line where the problem is (Line
+21 of TodoItem.js).
+
+So in the example I hadn't switched the `editTodo` call over to the options
+style method invocation.
+
+```
+this.props.editTodo(id, text)
+```
+
+Needed to become:
+
+```
+this.props.editTodo({ id, text })
+```
+
 [fsa]: https://github.com/acdlite/flux-standard-action
 [flux]: https://facebook.github.io/flux/docs/overview.html
 [react]: https://facebook.github.io/react

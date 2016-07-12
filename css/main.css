@@ -21,7 +21,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-size: 100%; 
+  font-size: 100%;
   font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -47,26 +47,27 @@ p { margin: 1em 0; }
 p > img {
   margin: auto;
   display: block;
+  max-width: 760px;
 }
 
-a { 
-  color: #964514; 
+a {
+  color: #964514;
   text-decoration: none;
   font-weight: bold;
 }
-a:hover   { 
-  color: /*#000*/green; 
+a:hover   {
+  color: /*#000*/green;
   text-decoration: underline;
 }
 a:visited { color: #964514; }
 
-@media print {    
+@media print {
     .no-print, .no-print * {
         display: none !important;
     }
 
     body {
-      font-size: 11pt; 
+      font-size: 11pt;
       margin: 0 3em 3em 3em;
     }
 
@@ -74,12 +75,12 @@ a:visited { color: #964514; }
       font-size: 10pt;
     }
 /*
-    a:link:after, 
-    a:visited:after { 
-      content: " (" attr(href) ") "; 
-      font-size: 90%; 
+    a:link:after,
+    a:visited:after {
+      content: " (" attr(href) ") ";
+      font-size: 90%;
     }
-*/    
+*/
 }
 .search {
   float: right;
@@ -249,4 +250,3 @@ blockquote p {
   padding: 8px;
   border: 1px solid #ddd;
 }
-
