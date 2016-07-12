@@ -97,4 +97,4 @@ library works in practice, you can see the change list [here][todo-changes].
 [npm]: https://www.npmjs.com/package/react-safe-actions
 [redux]: http://redux.js.org/
 [todomvc]: http://todomvc.com/
-[todo-changes]: https://github.com/thaggie/redux/commit/0abe76c04f6727f91df289aa0f7cba4e618867a0
+[todo-changes]: https://github.com/thaggie/redux/commit/67e3e87762d254acffdaf7ac949253286074efc8
