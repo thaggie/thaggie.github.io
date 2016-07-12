@@ -84,6 +84,8 @@ var action2 = myAction('ok');
 It's only 40 or so lines of code but I've still put the [source] up on [github]
 and published a module to [npm] as I think others may find it useful.
 
+I've updated the [redux][redux] [ToDo MVC][todomvc] example app, to show how the
+library works in practice, you can see the change list [here][todo-changes].
 
 [fsa]: https://github.com/acdlite/flux-standard-action
 [flux]: https://facebook.github.io/flux/docs/overview.html
@@ -93,3 +95,6 @@ and published a module to [npm] as I think others may find it useful.
 [source]: https://github.com/thaggie/react-safe-actions/blob/master/src/index.js
 [github]: https://github.com/thaggie/react-safe-actions
 [npm]: https://www.npmjs.com/package/react-safe-actions
+[redux]: http://redux.js.org/
+[todomvc]: http://todomvc.com/
+[todo-changes]: https://github.com/thaggie/redux/commit/0abe76c04f6727f91df289aa0f7cba4e618867a0
