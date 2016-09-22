@@ -3,9 +3,9 @@ layout: default
 title: Slide Decks
 ---
 
-<h2>{{ page.title }}</h2>
 
-<div class="slides">
+<main id="main" class="slides">
+  <h2>{{ page.title }}</h2>
   <dl>
     {% for slides in site.slides %}
       <dt><a href="{{ slides.url }}">{{ slides.title }}</a></dt>
@@ -13,4 +13,4 @@ title: Slide Decks
       </li>
     {% endfor %}
   </dl>
-</div>
+</main>
