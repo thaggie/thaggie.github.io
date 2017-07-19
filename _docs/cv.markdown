@@ -10,8 +10,8 @@ title: Tom Haggie
 #### Nov 2016 – Present *(Vancouver)*
 
 Joined [Splunk][splunk] as a Senior Software Engineer, working as a part of the
-client platform team. Working in [ES2015] with [react] and [redux]. Promoted to Principle
-Software Engineer in 2017, now working in a polyglot of languages - [python], [go]
+client platform team. Working in [ES2015][] with [react][] and [redux][]. Promoted to Principle
+Software Engineer in 2017, now working in a polyglot of languages - [python][], [go][]
 and good old [C++][cpp].
 
 
@@ -81,7 +81,7 @@ Worked on a Cube Designer, using the existing client code base to produce a tool
 Worked in a key role within a development team to create new server software to allow for connectivity between [OLAP][olap] sources from different vendors. The project was written in [C++][cpp] using the [Standard Template Library][stl] in a multi-threaded environment using [CORBA][corba]. I was designated a "mentor" within the team, which meant being allocated a new recruit, taking responsibility for their development, and being a first point of contact for any problems they encountered.
 
 #### April 1997 – June 1997
-Gained deeper knowledge of [OLAP][olap] (On-Line Analytical Processing) through a server side project writing an [ODBC][odbc] driver. The software mapped [OLAP][olap] metadata to a relational form to allow access to metadata supplied by the [Holos][holos] server to the more traditional [RDBMSs][rdms].
+Gained deeper knowledge of [OLAP][olap] (On-Line Analytical Processing) through a server side project writing an [ODBC][odbc] driver. The software mapped [OLAP][olap] metadata to a relational form to allow access to metadata supplied by the [Holos][holos] server to the more traditional [RDBMSs][rdbms].
 
 #### October 1996 – April 1997
 Worked on existing client software, bug fixing and adding new features using the [XVT toolkit][xvt] in [C][c]. Initial concentration on the [Macintosh][mac] platform gradually moved to development work on both [Macintosh][mac] and [Windows][win]. Worked on various different modules of the client side software with responsibility for a text editor component of an interactive development environment and later a visual design tool for the creation of user interfaces.
@@ -89,7 +89,7 @@ Worked on existing client software, bug fixing and adding new features using the
 ### [University of Southampton][soton] Cognitive Sciences Lab.
 
 #### April – September 1995
-Developed software for use in scientific experiments into categorical perception. The software was developed in [C++][cpp] for the [Mac][mac] platform.
+Developed software for use in scientific experiments into [categorical perception][cp]. The software was developed in [C++][cpp] for the [Mac][mac] platform.
 
 ## Education and Qualifications
 
@@ -106,7 +106,7 @@ My dissertation evaluated a variety of different cost-effective techniques for f
 #### 1992 – 1996 [University of Southampton][soton]
 This course is accredited both by the [British Computer Society][bcs] and the [Institute of Electrical & Electronic Engineers][ieee]. When inspected by the Higher Education Council for England it was given the highest possible grade, achieved by only 10 other education providers in the UK.
 
-Third year project was a simulator for the investigation of [emergent behaviour][emergence]. [Emergent behaviour][emergence] is an area of Artificial Intelligence which looks at how complex systems can be simulated by using a small set of rules acting in a chaotic environment – such as the flocking of birds or the foraging of ants.
+Third year project was a simulator for the investigation of [emergent behaviour][emergence]. [Emergent behaviour][emergence] is an area of Artificial Intelligence which looks at how complex systems can be simulated by using a small set of rules acting in a chaotic environment – such as the [flocking of birds][boids] or the foraging of [ants][vants].
 
 [github]: https://github.com/thaggie
 [twitter]: https://twitter.com/thaggie
@@ -170,15 +170,18 @@ Third year project was a simulator for the investigation of [emergent behaviour]
 [xvt]: https://en.wikipedia.org/wiki/XVT
 [c]: https://en.wikipedia.org/wiki/C_(programming_language)
 [win]: https://en.wikipedia.org/wiki/Microsoft_Windows
-[rdms]: https://en.wikipedia.org/wiki/Relational_database_management_system
+[rdbms]: https://en.wikipedia.org/wiki/Relational_database_management_system
 [holos]: https://en.wikipedia.org/wiki/Holos
 [ia4c]: https://appexchange.salesforce.com/listingDetail?listingId=a0N30000008ZVJzEAO
 [dreamforce]: http://dreamforce.com
 [com]: https://en.wikipedia.org/wiki/Component_Object_Model
 [cs]: https://msdn.microsoft.com/en-us/library/kx37x362.aspx
+[cp]: https://en.wikipedia.org/wiki/Categorical_perception
 [wf]: https://en.wikipedia.org/wiki/Windows_Forms]
 [emergence]: https://en.wikipedia.org/wiki/Emergence
 [splunk]: http://splunk.com
 [ES2015]: http://www.ecma-international.org/ecma-262/6.0/
 [python]: https://www.python.org
 [go]: https://golang.org
+[boids]: https://en.wikipedia.org/wiki/Boids
+[vants]: https://en.wikipedia.org/wiki/Langton%27s_ant
