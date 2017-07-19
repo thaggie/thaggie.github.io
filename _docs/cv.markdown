@@ -41,7 +41,7 @@ Sample Projects:
 #### August 2010 – October 2011 *(Vancouver)*
 Joined the [BI On Demand][bi-on-demand] team, building an online tool for organizations and individuals to create, share, and analyze data and reports on the web. The application backend was a mixture of [Ruby][ruby] for the App, [Java][java] for a query transformation layer (transforming an internal representation to [SQL][sql] / [MDX][mdx]) and [Javascript][js] with [jQuery][jquery] for the client.
 
-#### December 2009  – August 2010
+#### December 2009  – August 2010 *(Vancouver)*
 Joined the Advanced Analysis team, integrating data mining and data export functionality into their web based [OLAP][olap] client tool.
 
 ### [Business Objects][bo] *(purchased [Crystal Decisions][crystal])*
@@ -49,7 +49,7 @@ Joined the Advanced Analysis team, integrating data mining and data export funct
 #### January 2008 – December 2009 *(Vancouver)*
 Joined the Predictive Analysis team, adding data mining capabilities to Business Objects' offerings through Predictive Workbench (an OEM of [SPSS][spss]), which allows a data miner to examine data, and through Predictive Services, which exposes data mining functionality to non-statisticians.
 
-#### January 2006 – January 2008
+#### January 2006 – January 2008 *(Vancouver)*
 Joined the Research team in Vancouver as a Senior Research Engineer. The research team was concerned with non-incremental innovations; it was tasked with solving problems that required new knowledge or skills to develop software technologies that moved [Business Objects][bo] forward into fresh areas or dramatically improved existing offerings. Work concentrated on [OLAP][olap] technologies, constructing user interfaces to build [OLAP][olap] models and implementing the underlying system that realized and accessed said models. The work was done using a mixture of [GWT][gwt] and a JVM based functional language (similar to [Haskell][haskell]) called [CAL][cal].
 
 #### June 2004 – January 2006 *(Paris)*

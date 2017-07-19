@@ -62,7 +62,7 @@ a:hover   {
 }
 
 a:visited {
-  color: black;
+  color: darkred;
 }
 
 a:visited:hover {
@@ -129,6 +129,7 @@ div.slides {
 
 .site {
   max-width: 42rem;
+  min-height: 100vh;
   margin: 0 auto;
   line-height: 1.5rem;
   background-color: white;

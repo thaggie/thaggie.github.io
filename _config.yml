@@ -1,8 +1,8 @@
-name: Tom's Space
+name: Notes
 author: Tom Haggie
 url: http://haggie.ca
 collections:
   slides:
     output: true
   docs:
-    output: true    
+    output: true

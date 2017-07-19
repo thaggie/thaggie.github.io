@@ -20,8 +20,8 @@
         <meta name="twitter:site" content="@thaggie" />
         <meta name="twitter:title" content="{{ page.title | xml_escape }}" />
 
-        <meta name="copyright" content="{{ site.author }} {{ site.time | date: '%Y' }}">  
-        <meta name="author" content="{{ site.author }}">  
+        <meta name="copyright" content="{{ site.author }} {{ site.time | date: '%Y' }}">
+        <meta name="author" content="{{ site.author }}">
 
         <!-- Open Graph -->
         <meta name="og:title" content="{{ page.title | xml_escape }}" />
@@ -34,7 +34,7 @@
         <div class="site">
           <div class="header">
             <form action="{{ '/search' | prepend: site.baseurl }}" method="GET">
-              <input class="search no-print" type="text" name="query" placeholder="Search Tom's Space">
+              <input class="search no-print" type="text" name="query" placeholder="Search here">
             </form>
             <h1 class="title no-print"><a href="/">{{ site.name }}</a></h1>
 
@@ -48,12 +48,16 @@
                 <li><a href="https://github.com/thaggie">github</a></li>
                 <li><a href="https://twitter.com/thaggie">twitter</a></li>
                 <li><a href="https://www.linkedin.com/in/thaggie">linkedin</a></li>
-                <li><a href="https://www.flickr.com/oddsocks">flickr</a></li>   
+                <li><a href="https://www.flickr.com/oddsocks">flickr</a></li>
               </ul>
             </div>
             <div class="contact">
               <p>
-                &copy; {{ site.time | date: '%Y' }} 
+                {% if page.date %}
+                  &copy; {{ page.date | date: '%Y' }}
+                {% else %}
+                  &copy; {{ site.time | date: '%Y' }}
+                {% endif %}
                 {% if page.author %}
                   {{ page.author }}
                 {% else %}
