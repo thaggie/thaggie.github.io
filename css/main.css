@@ -106,7 +106,7 @@ a:visited:hover {
 }
 
 .posts span {
-  color: grey;
+  color: #666;
   font-family: monospace;
   font-size: 0.8rem;
 }
@@ -164,7 +164,7 @@ body {
 }
 
 .meta {
-  color: #aaa;
+  color: #666;
 }
 
 .footer {
@@ -209,7 +209,7 @@ body {
 /* standard */
 .post pre {
   border: 1px solid #ddd;
-    background-color: #eee;
+  background-color: #fafafa;
   padding: 0 .4rem;
   overflow-x: scroll;
 }
@@ -220,8 +220,8 @@ body {
 }
 
 .post code {
-  border: 1px solid #ddd;
-  background-color: #eee;
+  border: 1px solid #eee;
+  background-color: #fafafa;
   padding: 0 0.2rem;
 }
 
@@ -244,4 +244,30 @@ blockquote p {
   background-color: #eee;
   padding: 0.4rem;
   border: 1px solid #ddd;
+}
+
+/* a11y fixes for syntax styling */
+
+.highlight .cp {
+    color: #666;
+}
+
+.highlight .cm {
+    color: #666;
+}
+
+.highlight .c1 {
+    color: #666;
+}
+
+.highlight .mi {
+    color: #007777;
+}
+
+.highlight .nb {
+    color: #0076A3;
+}
+
+.highlight .sr  {
+    color: black;
 }

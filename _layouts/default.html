@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns" lang="en">
     <head>
         <meta charset="utf-8" />
 
@@ -34,7 +34,7 @@
         <div class="site">
           <div class="header">
             <form action="{{ '/search' | prepend: site.baseurl }}" method="GET">
-              <input class="search no-print" type="text" name="query" placeholder="Search here">
+              <input title="Search" class="search no-print" type="text" id="query" name="query" placeholder="Search here">
             </form>
             <h1 class="title no-print"><a href="/">{{ site.name }}</a></h1>
 
