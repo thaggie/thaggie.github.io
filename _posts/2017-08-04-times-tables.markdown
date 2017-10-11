@@ -4,10 +4,68 @@ title:  "Times Tables"
 date:   2017-08-04 22:55:48
 ---
 <style>
-
+.site {
+  max-width: 44rem;
+}
 table {
     text-align: center;
     margin: 0 auto;
+}
+@media print {
+  @page {
+    size: landscape;
+    orientation: landscape;
+  }
+  body {
+    margin: 0;
+  }
+
+  .site {
+    max-width: inherit;
+    min-height: inherit;
+    margin: 0 inherit;
+    line-height: 1.5rem;
+    background-color: white;
+  }
+
+  .copyright {
+    display: none;
+  }
+
+  .meta {
+    display: none;
+  }
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+table {
+  margin-top: 1rem;
+}
+th {
+  padding: 0.1rem 0.4rem;
+}
+  input {
+    border-style: none;
+    display: inline;
+  }
+
+  td {min-width: 4rem;}
+
+  ::-webkit-input-placeholder { /* WebKit browsers */
+      color: transparent;
+  }
+  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      color: transparent;
+  }
+  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+      color: transparent;
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10+ */
+      color: transparent;
+  }
+
 }
 
 th {
@@ -32,9 +90,9 @@ progress {
 
 </style>
 <form>
-<progress id="progress-bar" value="1" max="144"></progress>
+<progress class="no-print" id="progress-bar" value="1" max="144"></progress>
 <table id="times-table" ></table>
-<input id="next" type="submit" value="Next" />
+<input id="next" class="no-print" type="submit" value="Next" />
 </form>
 <script>
     var size = 12;
