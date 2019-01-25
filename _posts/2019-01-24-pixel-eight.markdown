@@ -6,6 +6,8 @@ date: 2019-01-24 22:47:00
 
 I've created a little wrapper around the [Kano Community SDK][kano-sdk] for building games for the [Kano Pixel][pixel-kit] called [pixel-eight][]. The API is inspired by that for the [pico-8][] but is Javascript based rather than [lua][]. This post is a walkthrough of developing a snake game using the [pixel-eight][] library.
 
+&nbsp;
+
 ### Getting Started
 
 I'm assuming you have a relatively modern version of [node][] installed.
@@ -34,6 +36,8 @@ Create the first commit:
 git add --all
 git commit -m "Boilerplate node project with pixel-eight"
 ```
+
+&nbsp;
 
 ### A First Program
 
@@ -70,6 +74,8 @@ git add --all
 git commit -m "A First Program, sets the pixel at the top left to red"
 ```
 
+&nbsp;
+
 ### A Development Environment
 
 While we can work writing code, running, writing more, stoping and then starting again it's preferable to let the program restart for us every time we save.
@@ -97,6 +103,8 @@ npm start
 Again you should see that the screen of the pixel is now blank with a red pixel in the top left.
 
 Edit `index.js`, change `color.red` to `color.yellow` and save, notice that the terminal says something like: `restarting due to changes...` and on the pixel it the color of the pixel in the top left changes from red to yellow.
+
+&nbsp;
 
 ### Game State
 
