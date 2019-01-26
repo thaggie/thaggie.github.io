@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pixel Eight 1"
+title: "Pixel Eight - Introduction"
 date: 2019-01-24 22:47:00
 ---
 
@@ -123,7 +123,7 @@ start({
 
 On saving we should now see the yellow pixel move from the top left to the center of the pixel.
 
-The next post will how to react to the buttons being pressed and changing the game state in the `update` function.
+The [next post](/2019/01/25/pixel-eight-2) will how to react to the buttons being pressed and changing the game state in the `update` function.
 
 [kano-sdk]: https://github.com/KanoComputing/community-sdk/tree/nodejs
 [pixel-kit]: https://kano.me/store/us/products/pixel-kit
