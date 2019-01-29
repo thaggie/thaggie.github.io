@@ -116,8 +116,9 @@ We can add collision detection to the `update` function to reset if the snake go
   },
 ```
 
-The next post will cover getting the snake to eat food and grow.
+The next post will cover getting the snake to eat food and grow by [adding in the game logic][next].
 
 [previous]: /2019/01/24/pixel-eight
-[pixel-eight]: https://github.com/thaggie/pixel-eight
+[next]: /2019/01/28/pixel-eight-3
+[pixel-eight-1]: https://github.com/thaggie/pixel-eight
 [pixel-kit]: https://kano.me/store/us/products/pixel-kit
