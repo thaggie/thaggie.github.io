@@ -153,9 +153,10 @@ start({
 });
 ```
 
-In the next post will cover adding a splash screen and displaying the score.
+In the next post will cover [adding a splash screen and displaying the score][pixel-eight-4].
 
 [pixel-eight-1]: /2019/01/24/pixel-eight
 [pixel-eight-2]: /2019/01/25/pixel-eight-2
+[pixel-eight-4]: /2019/03/17/pixel-eight-4
 [pixel-eight]: https://github.com/thaggie/pixel-eight
 [pixel-kit]: https://kano.me/store/us/products/pixel-kit
