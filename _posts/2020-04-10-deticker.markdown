@@ -1,0 +1,43 @@
+---
+layout: post
+title: "Deticker"
+date: 2020-04-10 10:57:48
+---
+
+[Aphix](https://twitter.com/AphixJS) [recently suggested](https://twitter.com/AphixJS/status/1248266314910752769) a way to uncheck everything in [twitter's interests](https://twitter.com/settings/your_twitter_data/twitter_interests) section. The method involved dev tools and css classes that are likely to change.
+
+It seemed to me that this could be useful as something that's generic (not specific to twitter) and as a bookmarklet (so available to people who aren't comfortable using the dev tools).
+
+Just drag the link below to your bookmarks bar and then click on it to detick every checkbox on a page:
+
+<div style="text-align: center; ">
+<a style="background-color: #EEE;border: 1px solid #999; border-radius: 4px; padding: 4px 8px; box-shadow: 5px 5px 5px #888;" href="javascript:(function(){document.querySelectorAll('input[type=&quot;checkbox&quot;]:not(:checked)').forEach(function(c) { setTimeout(function() { c.click(); }, 0); });})();">Ticker</a>
+<a style="background-color: #EEE;border: 1px solid #999; border-radius: 4px; padding: 4px 8px; box-shadow: 5px 5px 5px #888;" href="javascript:(function(){document.querySelectorAll('input[type=&quot;checkbox&quot;]:checked').forEach(function(c) { setTimeout(function() { c.click(); }, 0); });})();">Deticker</a>
+<p>(I added a "Ticker" too for if you have the opposite problem)</p>
+</div>
+
+Some checkboxes so this can be tried on this page:
+
+<form>
+<input checked id="c1" type="checkbox" />
+<label for="c1">A Checkbox</label><br>
+<input checked id="c2" type="checkbox" />
+<label for="c2">Another Checkbox</label><br>
+<input id="c3" type="checkbox"  />
+<label for="c3">Yet Another Checkbox</label><br>
+</form>
+
+The code, for those interested:
+
+```js
+// get all the checked checkboxes on the page
+document
+  .querySelectorAll('input[type="checkbox"]:checked')
+  .forEach(function (check) {
+    // give the browser room to breath by not clicking all the buttons right away
+    setTimeout(function () {
+      // click the checkbox
+      check.click();
+    }, 0);
+  });
+```
