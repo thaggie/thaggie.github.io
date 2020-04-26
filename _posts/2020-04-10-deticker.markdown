@@ -11,8 +11,8 @@ It seemed to me that this could be useful as something that's generic (not speci
 Just drag the link below to your bookmarks bar and then click on it to detick every checkbox on a page:
 
 <div style="text-align: center; ">
-<a style="background-color: #EEE;border: 1px solid #999; border-radius: 4px; padding: 4px 8px; box-shadow: 5px 5px 5px #888;" href="javascript:(function(){document.querySelectorAll('input[type=&quot;checkbox&quot;]:not(:checked)').forEach(function(c) { setTimeout(function() { c.click(); }, 0); });})();">Ticker</a>
-<a style="background-color: #EEE;border: 1px solid #999; border-radius: 4px; padding: 4px 8px; box-shadow: 5px 5px 5px #888;" href="javascript:(function(){document.querySelectorAll('input[type=&quot;checkbox&quot;]:checked').forEach(function(c) { setTimeout(function() { c.click(); }, 0); });})();">Deticker</a>
+<a style="background-color: #EEE;border: 1px solid #999; border-radius: 4px; padding: 4px 8px; box-shadow: 5px 5px 5px #888;" href="javascript:(function(){document.querySelectorAll('input[type=&quot;checkbox&quot;]:not(:checked),[role=&quot;checkbox&quot;][aria-checked=&quot;false&quot;]').forEach(function(c) { setTimeout(function() { c.click(); }, 0); });})();">Ticker</a>
+<a style="background-color: #EEE;border: 1px solid #999; border-radius: 4px; padding: 4px 8px; box-shadow: 5px 5px 5px #888;" href="javascript:(function(){document.querySelectorAll('input[type=&quot;checkbox&quot;]:checked,[role=&quot;checkbox&quot;][aria-checked=&quot;true&quot;]').forEach(function(c) { setTimeout(function() { c.click(); }, 0); });})();">Deticker</a>
 <p>(I added a "Ticker" too for if you have the opposite problem)</p>
 </div>
 
