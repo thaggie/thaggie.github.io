@@ -27,12 +27,45 @@ Some checkboxes so this can be tried on this page:
 <label for="c3">Yet Another Checkbox</label><br>
 </form>
 
+<style>
+[role="checkbox"] {
+    padding:5px;
+}
+
+[aria-checked="true"]::before {
+    content: "[x]";
+}
+
+[aria-checked="false"]::before {
+    content: "[ ]";
+}
+</style>
+<script>
+function changeCheckbox(event) {
+    let item = document.getElementById('chkPref');
+    switch(item.getAttribute('aria-checked')) {
+        case "true":
+            item.setAttribute('aria-checked', "false");
+            break;
+        case "false":
+            item.setAttribute('aria-checked', "true");
+            break;
+    }
+}
+</script>
+
+<span role="checkbox" id="chkPref" aria-checked="false" onclick="changeCheckbox()" onKeyPress="changeCheckbox()"
+   tabindex="0" aria-labelledby="chk1-label"></span>
+<label id="chk1-label" onclick="changeCheckbox()" onKeyPress="changeCheckbox()">Fake Checkbox</label>
+
 The code, for those interested:
 
 ```js
 // get all the checked checkboxes on the page
 document
-  .querySelectorAll('input[type="checkbox"]:checked')
+  .querySelectorAll(
+    'input[type="checkbox"]:checked,[role="checkbox][aria-checked="true"]'
+  )
   .forEach(function (check) {
     // give the browser room to breath by not clicking all the buttons right away
     setTimeout(function () {
