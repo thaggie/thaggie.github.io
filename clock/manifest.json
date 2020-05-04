@@ -1,0 +1,9 @@
+{
+  "name": "Clock: A game about time",
+  "short_name": "clock",
+  "icons": [],
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#222",
+  "theme_color": "#fff"
+}
