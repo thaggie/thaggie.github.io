@@ -152,7 +152,7 @@ function drawControls(onCheck) {
   hourInput.setAttribute("type", "number");
   hourInput.setAttribute("min", "1");
   hourInput.setAttribute("max", "12");
-  hourInput.setAttribute("value", "6");
+  hourInput.setAttribute("value", "");
   hourInput.addEventListener("keyup", (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -167,7 +167,7 @@ function drawControls(onCheck) {
   minuteInput.setAttribute("min", "0");
   minuteInput.setAttribute("max", "60");
   minuteInput.setAttribute("step", "5");
-  minuteInput.setAttribute("value", "30");
+  minuteInput.setAttribute("value", "");
   minuteInput.addEventListener("keyup", (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -258,10 +258,13 @@ function drawMessage(message) {
 }
 
 drawControls(() => {
+  const hourInput = document.getElementById("hour");
+  const minutesInput = document.getElementById("minutes");
   const correct =
-    game.hour == document.getElementById("hour").value &&
-    game.minutes == document.getElementById("minutes").value;
+    game.hour == hourInput.value && game.minutes == minutesInput.value;
 
+  hourInput.value = "";
+  minutesInput.value = "";
   game.run.push(correct);
   if (correct) {
     drawMessage("");
