@@ -4,9 +4,9 @@ const OFFSET_X = 160;
 const OFFSET_Y = 160;
 const FACE_RADIUS = 155;
 const MINUTE_RADIUS = 145;
-const HOUR_RADIUS = 130;
-const HOUR_SIZE = 90;
-const MINUTE_SIZE = 120;
+const HOUR_RADIUS = 125;
+const HOUR_SIZE = 80;
+const MINUTE_SIZE = 110;
 
 function radians(degrees) {
   return (Math.PI / 180) * degrees;
