@@ -190,13 +190,25 @@ function drawControls(onCheck) {
   controls.appendChild(document.createElement("br"));
   controls.appendChild(checkButton);
 
-  document.body.appendChild(controls);
+  // content.appendChild(controls);
+
+  const content = document.createElement("div");
+  content.setAttribute("id", "content");
+
+  content.appendChild(controls);
+  const score = document.createElement("div");
+  score.setAttribute("id", "run");
+  content.appendChild(score);
+
+  document.body.appendChild(content);
 }
 
 const clock = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 clock.setAttribute("height", IMAGE_HEIGHT);
 clock.setAttribute("width", IMAGE_WIDTH);
-document.body.appendChild(clock);
+const clockContainer = document.createElement("div");
+clockContainer.appendChild(clock);
+document.body.appendChild(clockContainer);
 
 function clear(svg) {
   while (svg.lastChild) {
@@ -259,9 +271,5 @@ drawControls(() => {
     drawMessage("Try again!");
   }
 });
-
-const score = document.createElement("div");
-score.setAttribute("id", "run");
-document.body.appendChild(score);
 
 newTest();
