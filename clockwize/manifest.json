@@ -1,0 +1,9 @@
+{
+  "name": "Clockwize: A game about time",
+  "short_name": "Clockwize",
+  "icons": [],
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "mintcream",
+  "theme_color": "white"
+}

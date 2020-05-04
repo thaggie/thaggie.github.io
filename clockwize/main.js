@@ -1,3 +1,13 @@
+const IMAGE_WIDTH = 320;
+const IMAGE_HEIGHT = 320;
+const OFFSET_X = 160;
+const OFFSET_Y = 160;
+const FACE_RADIUS = 155;
+const MINUTE_RADIUS = 145;
+const HOUR_RADIUS = 130;
+const HOUR_SIZE = 90;
+const MINUTE_SIZE = 120;
+
 function radians(degrees) {
   return (Math.PI / 180) * degrees;
 }
@@ -8,10 +18,18 @@ function degrees(hour) {
 
 function drawHour(clock, hour) {
   const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-  text.setAttribute("x", 120 + 100 * Math.sin(radians(degrees(hour))));
-  text.setAttribute("y", 120 - 100 * Math.cos(radians(degrees(hour))));
+  text.setAttribute(
+    "x",
+    OFFSET_X + HOUR_RADIUS * Math.sin(radians(degrees(hour)))
+  );
+  text.setAttribute(
+    "y",
+    OFFSET_Y - HOUR_RADIUS * Math.cos(radians(degrees(hour)))
+  );
   text.setAttribute("text-anchor", "middle");
   text.setAttribute("alignment-baseline", "central");
+  text.setAttribute("font-size", "24px");
+  text.setAttribute("font-family", "Arial");
 
   text.setAttribute("fill", "black");
   text.innerHTML = String(hour);
@@ -19,43 +37,100 @@ function drawHour(clock, hour) {
   clock.appendChild(text);
 }
 
-function drawClockFace(clock) {
+function drawDot(clock, hour) {
+  const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  dot.setAttribute(
+    "cx",
+    OFFSET_X + HOUR_RADIUS * Math.sin(radians(degrees(hour)))
+  );
+  dot.setAttribute(
+    "cy",
+    OFFSET_Y - HOUR_RADIUS * Math.cos(radians(degrees(hour)))
+  );
+  dot.setAttribute("r", "5");
+  dot.setAttribute("fill", "black");
+  clock.appendChild(dot);
+}
+
+function drawMinute(clock, minute) {
+  const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  text.setAttribute(
+    "x",
+    OFFSET_X + MINUTE_RADIUS * Math.sin(radians(degrees(minute / 5)))
+  );
+  text.setAttribute(
+    "y",
+    OFFSET_Y - MINUTE_RADIUS * Math.cos(radians(degrees(minute / 5)))
+  );
+  text.setAttribute("text-anchor", "middle");
+  text.setAttribute("alignment-baseline", "central");
+  text.setAttribute("font-size", "8px");
+  text.setAttribute("font-family", "Arial");
+
+  text.setAttribute("fill", "black");
+  text.innerHTML = String(minute);
+
+  clock.appendChild(text);
+}
+
+function drawClockFace(clock, minutes, hours) {
   const border = document.createElementNS(
     "http://www.w3.org/2000/svg",
     "circle"
   );
-  border.setAttribute("cx", 120);
-  border.setAttribute("cy", 120);
-  border.setAttribute("r", 110);
+  border.setAttribute("cx", OFFSET_X);
+  border.setAttribute("cy", OFFSET_Y);
+  border.setAttribute("r", FACE_RADIUS);
   border.setAttribute("stroke", "black");
-  border.setAttribute("stroke-width", 1);
+  border.setAttribute("stroke-width", 4);
   border.setAttribute("fill", "white");
 
   clock.appendChild(border);
 
   for (let hour = 1; hour <= 12; ++hour) {
-    drawHour(clock, hour);
+    if (hours) {
+      drawHour(clock, hour);
+    } else {
+      drawDot(clock, hour);
+    }
+  }
+  if (minutes) {
+    for (let minute = 0; minute < 60; ++minute) {
+      drawMinute(clock, minute);
+    }
   }
 }
 
 function drawHourHand(clock, hour) {
   const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-  line.setAttribute("x1", 120);
-  line.setAttribute("y1", 120);
-  line.setAttribute("x2", 120 + 60 * Math.sin(radians(degrees(hour))));
-  line.setAttribute("y2", 120 - 60 * Math.cos(radians(degrees(hour))));
+  line.setAttribute("x1", OFFSET_X);
+  line.setAttribute("y1", OFFSET_Y);
+  line.setAttribute(
+    "x2",
+    OFFSET_X + HOUR_SIZE * Math.sin(radians(degrees(hour)))
+  );
+  line.setAttribute(
+    "y2",
+    OFFSET_Y - HOUR_SIZE * Math.cos(radians(degrees(hour)))
+  );
   line.setAttribute("stroke", "black");
-  line.setAttribute("stroke-width", 4);
+  line.setAttribute("stroke-width", 6);
 
   clock.appendChild(line);
 }
 
 function drawMinuteHand(clock, minute) {
   const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-  line.setAttribute("x1", 120);
-  line.setAttribute("y1", 120);
-  line.setAttribute("x2", 120 + 80 * Math.sin(radians(degrees(minute * 5))));
-  line.setAttribute("y2", 120 - 80 * Math.cos(radians(degrees(minute * 5))));
+  line.setAttribute("x1", OFFSET_X);
+  line.setAttribute("y1", OFFSET_Y);
+  line.setAttribute(
+    "x2",
+    OFFSET_X + MINUTE_SIZE * Math.sin(radians(degrees(minute * 5)))
+  );
+  line.setAttribute(
+    "y2",
+    OFFSET_Y - MINUTE_SIZE * Math.cos(radians(degrees(minute * 5)))
+  );
   line.setAttribute("stroke", "black");
   line.setAttribute("stroke-width", 2);
 
@@ -112,14 +187,15 @@ function drawControls(onCheck) {
   controls.appendChild(hourInput);
   controls.appendChild(document.createTextNode(":"));
   controls.appendChild(minuteInput);
+  controls.appendChild(document.createElement("br"));
   controls.appendChild(checkButton);
 
   document.body.appendChild(controls);
 }
 
 const clock = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-clock.setAttribute("height", 300);
-clock.setAttribute("width", 300);
+clock.setAttribute("height", IMAGE_HEIGHT);
+clock.setAttribute("width", IMAGE_WIDTH);
 document.body.appendChild(clock);
 
 function clear(svg) {
@@ -127,8 +203,6 @@ function clear(svg) {
     svg.removeChild(svg.lastChild);
   }
 }
-
-drawClockFace(clock);
 
 const game = {
   run: [],
@@ -143,9 +217,8 @@ function drawRun(game) {
   if (game.run.length > 0) {
     const run = document.getElementById("run");
     run.innerHTML = "";
-    run.appendChild(document.createTextNode("Streak: "));
     for (let i = 0; i < game.run.length; ++i) {
-      const score = document.createElement("span");
+      const score = document.createElement("div");
       if (game.run[i]) {
         score.innerHTML = "&#x2713";
         score.setAttribute("style", "color: green;");
@@ -161,10 +234,15 @@ function drawRun(game) {
 function newTest() {
   newTime(game);
   clear(clock);
-  drawClockFace(clock);
+  drawClockFace(clock, game.run.length < 6, game.run.length < 12);
   drawHands(clock, game.hour, game.minutes);
   drawRun(game);
   document.getElementById("hour").focus();
+}
+
+function drawMessage(message) {
+  const run = document.getElementById("run");
+  run.innerHTML = message;
 }
 
 drawControls(() => {
@@ -173,7 +251,13 @@ drawControls(() => {
     game.minutes == document.getElementById("minutes").value;
 
   game.run.push(correct);
-  newTest();
+  if (correct) {
+    drawMessage("");
+    newTest();
+  } else {
+    game.run = [];
+    drawMessage("Try again!");
+  }
 });
 
 const score = document.createElement("div");
