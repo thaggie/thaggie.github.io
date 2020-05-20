@@ -125,11 +125,11 @@ function drawMinuteHand(clock, minute) {
   line.setAttribute("y1", OFFSET_Y);
   line.setAttribute(
     "x2",
-    OFFSET_X + MINUTE_SIZE * Math.sin(radians(degrees(minute * 5)))
+    OFFSET_X + MINUTE_SIZE * Math.sin(radians(degrees(minute / 5)))
   );
   line.setAttribute(
     "y2",
-    OFFSET_Y - MINUTE_SIZE * Math.cos(radians(degrees(minute * 5)))
+    OFFSET_Y - MINUTE_SIZE * Math.cos(radians(degrees(minute / 5)))
   );
   line.setAttribute("stroke", "black");
   line.setAttribute("stroke-width", 2);
@@ -220,9 +220,14 @@ const game = {
   run: [],
 };
 
-function newTime(game) {
-  game.hour = Math.ceil(Math.random() * 12);
-  game.minutes = Math.floor(Math.random() * 12) * 5;
+function newTime(game, h, m) {
+  if (h === undefined && m === undefined) {
+    game.hour = Math.ceil(Math.random() * 12);
+    game.minutes = Math.floor(Math.random() * 12) * 5;
+  } else {
+    game.hour = h;
+    game.minutes = m;
+  }
 }
 
 function drawRun(game) {
@@ -243,8 +248,8 @@ function drawRun(game) {
   }
 }
 
-function newTest() {
-  newTime(game);
+function newTest(h, m) {
+  newTime(game, h, m);
   clear(clock);
   drawClockFace(clock, game.run.length < 6, game.run.length < 12);
   drawHands(clock, game.hour, game.minutes);
@@ -275,4 +280,7 @@ drawControls(() => {
   }
 });
 
-newTest();
+const d = new Date();
+const h = d.getHours() > 12 ? d.getHours() - 12 : d.getHours();
+const m = Math.floor(d.getMinutes() / 5) * 5;
+newTest(h, m);
