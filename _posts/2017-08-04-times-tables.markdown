@@ -79,6 +79,17 @@ table input {
     text-align: center;
 }
 
+table input[type=number] {
+    -moz-appearance:textfield; 
+    margin: 0;
+    width: 7ch;
+} 
+
+table input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .todo {
     background-color: #fee;
 }
