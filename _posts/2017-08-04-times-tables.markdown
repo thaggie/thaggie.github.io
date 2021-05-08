@@ -1,8 +1,9 @@
 ---
 layout: post
-title:  "Times Tables"
-date:   2017-08-04 22:55:48
+title: "Times Tables"
+date: 2017-08-04 22:55:48
 ---
+
 <style>
 .site {
   max-width: 44rem;
@@ -10,6 +11,7 @@ date:   2017-08-04 22:55:48
 table {
     text-align: center;
     margin: 0 auto;
+    background-color: white;
 }
 @media print {
   @page {
@@ -43,6 +45,7 @@ table, th, td {
 table {
   margin-top: 1rem;
 }
+
 th {
   padding: 0.1rem 0.4rem;
 }
@@ -127,6 +130,7 @@ progress {
             input.setAttribute('placeholder', id)            
             input.setAttribute('disabled', true)
             input.setAttribute('size', 6)
+            input.setAttribute('type', 'number')
             input.setAttribute('pattern', '' + j* i)
             input.setAttribute('title', '' + j + ' times ' +  i)
 
@@ -181,4 +185,5 @@ progress {
     input.addEventListener("click", moveNext);
 
     next();
+
 </script>
