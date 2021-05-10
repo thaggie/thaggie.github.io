@@ -144,6 +144,7 @@ progress {
             input.setAttribute('type', 'number')
             input.setAttribute('pattern', '' + j* i)
             input.setAttribute('title', '' + j + ' times ' +  i)
+            input.setAttribute('aria-label', '' + j + ' times ' +  i)
 
             td.appendChild(input);
             tr.appendChild(td);

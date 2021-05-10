@@ -1,41 +1,41 @@
 ---
 layout: post
-title:  "React"
-date:   2014-05-01 00:20:48
+title: "React"
+date: 2014-05-01 00:20:48
 ---
 
 > **Update:** The world has moved on, typically you'll want to use [browserify](http://browserify.org) or [webpack](https://webpack.github.io/), I have updated the [example repository](https://github.com/thaggie/react-tut) to work via [npm](https://www.npmjs.com/) rather than with a lib directory and with a much newer version of react.
 
-I've been experimenting with Facebook's [React](http://facebook.github.io/react/) framework. 
+I've been experimenting with Facebook's [React](http://facebook.github.io/react/) framework.
 I spent a little time working out how to use it with [require.js](http://requirejs.org/) and so
-thought I'd write a little on how that went. I was interested in getting [require.js](http://requirejs.org/) to 
-work rather than [browserify](http://browserify.org) ([reactify](https://github.com/andreypopp/reactify)) 
+thought I'd write a little on how that went. I was interested in getting [require.js](http://requirejs.org/) to
+work rather than [browserify](http://browserify.org) ([reactify](https://github.com/andreypopp/reactify))
 as I like being able to have a development environment where the browser's just grabbing the sources, compiling the jsx on the fly.
 
 What I did initially was create a copy of the [React tutorial](http://facebook.github.io/react/docs/tutorial.html)
 where I split each component into its own file - to simulate how the UI for a real App would be split among modules.
-The commit with the intial state can be found [here](https://github.com/thaggie/react-tut/commit/48dc16d106de0b6b9798a0ce6222fbd7bc087788). This way I've built an example of the minimum needed to tie these two technologies. **For those who learn better from just being able
-to investigate a small codebase the source code is [here](https://github.com/thaggie/react-tut/).**
+The [commit with the intial state can be found here](https://github.com/thaggie/react-tut/commit/48dc16d106de0b6b9798a0ce6222fbd7bc087788). This way I've built an example of the minimum needed to tie these two technologies. **For those who learn better from just being able
+to investigate a small codebase [the source code is here](https://github.com/thaggie/react-tut/).**
 
-I got this going using the [jsx-requirejs-plugin](https://github.com/philix/jsx-requirejs-plugin). 
+I got this going using the [jsx-requirejs-plugin](https://github.com/philix/jsx-requirejs-plugin).
 
-The first step was that I moved over to using local copies of the various dependencies in a `lib` directory. 
-[jsx-requirejs-plugin](https://github.com/philix/jsx-requirejs-plugin) needs its own updated version of JSXTransformer, 
+The first step was that I moved over to using local copies of the various dependencies in a `lib` directory.
+[jsx-requirejs-plugin](https://github.com/philix/jsx-requirejs-plugin) needs its own updated version of JSXTransformer,
 the text.js library, its own file and the [require.js](http://requirejs.org/) dependencies.
 
 So the `lib` directory looks like...
 
-* [JSXTransformer-0.10.0.js](https://raw.githubusercontent.com/alirussell/jsx-requirejs-plugin/master/js/JSXTransformer-0.10.0.js) 
-* [jsx.js](https://raw.githubusercontent.com/philix/jsx-requirejs-plugin/master/js/jsx.js)
-* [r.js](http://requirejs.org/docs/release/2.1.11/r.js)
-* [react-0.10.0.js](http://fb.me/react-0.10.0.js)
-* [require.js](http://requirejs.org/docs/release/2.1.11/comments/require.js)
-* [showdown.js](http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js)
-* [text.js](https://raw.githubusercontent.com/requirejs/text/latest/text.js)
+- [JSXTransformer-0.10.0.js](https://raw.githubusercontent.com/alirussell/jsx-requirejs-plugin/master/js/JSXTransformer-0.10.0.js)
+- [jsx.js](https://raw.githubusercontent.com/philix/jsx-requirejs-plugin/master/js/jsx.js)
+- [r.js](http://requirejs.org/docs/release/2.1.11/r.js)
+- [react-0.10.0.js](http://fb.me/react-0.10.0.js)
+- [require.js 2.1.11](http://requirejs.org/docs/release/2.1.11/comments/require.js)
+- [showdown.js](http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js)
+- [text.js](https://raw.githubusercontent.com/requirejs/text/latest/text.js)
 
 The index.html ends up being very trivial now, just loading a single "main" script:
 
-``` html
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -50,64 +50,62 @@ The index.html ends up being very trivial now, just loading a single "main" scri
 
 The main script itself loads the CommentBox and renders it into the page:
 
-The first part of [main.js](https://github.com/thaggie/react-tut/blob/master/main.js) configures 
+The first part of [main.js](https://github.com/thaggie/react-tut/blob/master/main.js) configures
 requirejs, giving us short labels for each of the third-party dependencies.
 
-``` js
+```js
 require.config({
   paths: {
-  	"text": "lib/text",
-  	"jsx": "lib/jsx",
-  	"showdown": "lib/showdown",
-    "react": "lib/react-0.10.0",
-    "JSXTransformer": "lib/JSXTransformer-0.10.0"
-  }
+    text: "lib/text",
+    jsx: "lib/jsx",
+    showdown: "lib/showdown",
+    react: "lib/react-0.10.0",
+    JSXTransformer: "lib/JSXTransformer-0.10.0",
+  },
 });
 ```
 
 The second part of [main.js](https://github.com/thaggie/react-tut/blob/master/main.js) actuall does
-the work, it states its dependency of react and the comment box component and then uses react to 
+the work, it states its dependency of react and the comment box component and then uses react to
 render the component. Note that we're rendering the component in the JavaScript form, not using JSX.
 
 Notice how the files with JSX code are prefixed with a `jsx!` to identify them for pre-processing.
 
-``` js
-require([
-	'react', 
-	'jsx!comment-box'
-], function(React, CommentBox) {
-	var data = [
-          {author: "Pete Hunt", text: "This is one comment"},
-          {author: "Jordan Walke", text: "This is *another* comment"}
-        ];
-	React.renderComponent(new CommentBox({data:data}), 
-    document.getElementById('content'));
+```js
+require(["react", "jsx!comment-box"], function (React, CommentBox) {
+  var data = [
+    { author: "Pete Hunt", text: "This is one comment" },
+    { author: "Jordan Walke", text: "This is *another* comment" },
+  ];
+  React.renderComponent(
+    new CommentBox({ data: data }),
+    document.getElementById("content")
+  );
 });
 ```
 
 I'll just include one example of a component, the form is the same for the other components.
 I had to rename the jsx files to js for requirejs to find them (though this can be fixed via config).
 
-
-``` js
+```js
 /**
  * @jsx React.DOM
  */
-define([
-    "react", 
-    "jsx!comment-list", 
-    "jsx!comment-form"
-], function(React, CommentList, CommentForm) {
+define(["react", "jsx!comment-list", "jsx!comment-form"], function (
+  React,
+  CommentList,
+  CommentForm
+) {
   var CommentBox = React.createClass({
-  	getInitialState: function() {
-  		return {data: this.props.data};
-  	},
-  	handleCommentSubmit: function(comment) {
-  		var comments = this.state.data;
-      	var newComments = comments.concat([comment]);
-      	this.setState({data: newComments});
-  	},
-    render: function() {
+    getInitialState: function () {
+      return { data: this.props.data };
+    },
+    handleCommentSubmit: function (comment) {
+      var comments = this.state.data;
+      var newComments = comments.concat([comment]);
+      this.setState({ data: newComments });
+    },
+    render: function () {
       return (
         <div className="commentBox">
           <h1>Comments</h1>
@@ -115,10 +113,8 @@ define([
           <CommentForm onCommentSubmit={this.handleCommentSubmit} />
         </div>
       );
-    }
+    },
   });
   return CommentBox;
 });
 ```
-
-

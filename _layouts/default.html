@@ -32,17 +32,17 @@
     <body>
 
         <div class="site">
-          <div class="header">
+          <header class="header">
             <form action="{{ '/search' | prepend: site.baseurl }}" method="GET">
-              <input title="Search" class="search no-print" type="text" id="query" name="query" placeholder="Search here">
+              <input aria-label="Search" title="Search" class="search no-print" type="text" id="query" name="query" placeholder="Search here">
             </form>
             <h1 class="title no-print"><a href="/">{{ site.name }}</a></h1>
 
-          </div>
+          </header>
 
           {{ content }}
 
-          <div class="footer">
+          <footer class="footer">
             <div class="contact no-print">
               <ul>
                 <li><a href="https://github.com/thaggie">github</a></li>
@@ -65,7 +65,7 @@
                 {% endif %}
               </p>
             </div>
-          </div>
+          </footer>
         </div>
     </body>
 </html>
