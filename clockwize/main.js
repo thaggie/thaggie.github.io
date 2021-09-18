@@ -148,6 +148,7 @@ function drawHands(clock, hour, minutes) {
 function drawControls(onCheck) {
   const hourInput = document.createElement("input");
   hourInput.setAttribute("id", "hour");
+  hourInput.setAttribute("aria-label", "Hour");
   hourInput.setAttribute("name", "hour");
   hourInput.setAttribute("type", "number");
   hourInput.setAttribute("min", "1");
@@ -162,6 +163,7 @@ function drawControls(onCheck) {
 
   const minuteInput = document.createElement("input");
   minuteInput.setAttribute("id", "minutes");
+  minuteInput.setAttribute("aria-label", "Minutes");
   minuteInput.setAttribute("name", "minutes");
   minuteInput.setAttribute("type", "number");
   minuteInput.setAttribute("min", "0");
