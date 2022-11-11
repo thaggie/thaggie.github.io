@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport"content="width=device-width, initial-scale=1" />
+    <meta name="apple-mobile-web-app-title" content="Cubs Camping Checklist" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Cubs Camping Checklist</title>    
+    <link rel="stylesheet" href="/css/main.css" />
+    <style>
+    
+      .site {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+
+      label {
+        margin-left: 1rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-family: sans-serif;
+        user-select: none;
+        display: block;
+      }
+
+      h2 {
+        margin-top: 0.5rem;
+      }
+
+      em {
+        font-weight: bold;
+        font-style: unset;
+      }
+
+      #status {
+        position: fixed;
+        right: 1rem;
+        top: 1rem;
+        background-color: rgba(10,10,10,0.15);
+        border-radius: 1rem;
+        padding: 0.5rem 1rem;
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="site">
+    <h1>Cubs Camping Checklist</h1>
+    <p>
+      This list of clothing is <em>in addition</em> to what you wear to camp and should be packed to be 
+      waterproof such as in zip-lock bags. Try to avoid 100% cotton clothing. If you can, wool/poly 
+      blends are much better at keeping you warm and dry.
+    </p>
+    <form id="cubs-gear-checklist">
+      <input type="reset" id="reset" />
+      <section>
+        <h2>Gear</h2>
+      <label for="Backpack">
+        <input type="checkbox" name="Backpack" id="Backpack"/>
+        <em>Backpack</em> 35 - 65 litres in volume (big enough to carry all personal gear)
+      </label>
+        <label for="SleepingBag">
+        <input type="checkbox" name="SleepingBag" id="SleepingBag"/>
+        <em>Sleeping Bag</em> A 3 season bag rated between 0 to -9 degrees is fine, with a toque</label>
+        <label for="SleepingPad">
+        <input type="checkbox" name="SleepingPad" id="SleepingPad"/>
+        <em>Sleeping Pad</em> Thermarest /blue foamy /closed cell foam.</label>
+        <label for="PackCover">
+        <input type="checkbox" name="PackCover" id="PackCover"/>
+        <em>Pack Cover</em> This can be a proper one or just a garbage bag</label>
+      </section>
+    <section>
+      <h2>Clothes</h2>
+        <label for="Underwear">
+        <input type="checkbox" name="Underwear" id="Underwear"/>
+        <em>Underwear</em> 1 pair per day. 1 pair of long underwear as well.</label>
+        <label for="TShirt">
+        <input type="checkbox" name="TShirt" id="TShirt"/>
+        <em>T-shirt</em> 1 or 2</label>
+        <label for="Socks">
+        <input type="checkbox" name="Socks" id="Socks"/>
+        <em>Socks</em> 1 pair per day – preferably wool socks or blends.</label>
+        <label for="Pants">
+        <input type="checkbox" name="Pants" id="Pants"/>
+        <em>Long Pants</em> 1 pair, quick drying, <em>no jeans</em></label>
+        <label for="Shorts">
+        <input type="checkbox" name="Shorts" id="Shorts"/>
+        <em>Shorts</em> 1 pair</label>
+        <label for="SwimSuit">
+        <input type="checkbox" name="SwimSuit" id="SwimSuit"/>
+        <em>Swim suit</em> 1 pair</label>
+        <label for="Sweater">
+        <input type="checkbox" name="Sweater" id="Sweater"/>
+        <em>Sweater</em> 1 fleece is acceptable (bring 2 if it is cold)</label>
+        <label for="Jacket">
+        <input type="checkbox" name="Jacket" id="Jacket"/>
+        <em>Jacket</em> whatever jacket will keep you warm</label>
+        <label for="Hat">
+        <input type="checkbox" name="Hat" id="Hat"/>
+        <em>Hat</em> to keep the sun out of your eyes and the rain and bugs off your head</label>
+        <label for="Toque">
+        <input type="checkbox" name="Toque" id="Toque"/>
+        <em>Toque</em> 2 – 1 for daytime, 1 to wear at night to bed.</label>
+        <label for="Raingear">
+        <input type="checkbox" name="Raingear" id="Raingear"/>
+        <em>Raingear</em> Pants and jacket, must be 100% waterproof</label>
+        <label for="Towel">
+        <input type="checkbox" name="Towel" id="Towel"/>
+        <em>Small towel</em> for drying after swimming, or falling in the creek</label>
+        </section><section>
+          <h2>Eating</h2>
+        <label for="Cutlery">
+        <input type="checkbox" name="Cutlery" id="Cutlery"/>
+        <em>Cutlery</em> knife, fork and spoon</label>
+        <label for="CoveredBowl">
+        <input type="checkbox" name="CoveredBowl" id="CoveredBowl"/>
+        <em>Covered Bowl</em> a square or rectangle container is best</label>
+        <label for="DishCloth">
+        <input type="checkbox" name="DishCloth" id="DishCloth"/>
+        <em>Dish cloth</em> for drying your dishes</label>
+        <label for="Mug">
+        <input type="checkbox" name="Mug" id="Mug"/>
+        <em>Mug</em> </label>
+      </section>
+      <section>
+        <h2>Equipment</h2>
+        <label for="Headlamp">
+        <input type="checkbox" name="Headlamp" id="Headlamp"/>
+        <em>Headlamp</em> with spare batteries. A flashlight would work as well.</label>
+        <label for="PocketKnife">
+        <input type="checkbox" name="PocketKnife" id="PocketKnife"/>
+        <em>Pocket knife</em> Should have a locking blade</label>
+        <label for="Matches">
+        <input type="checkbox" name="Matches" id="Matches"/>
+        <em>Matches</em> in a waterproof container</label>
+        <label for="WaterBottle">
+        <input type="checkbox" label="WaterBottle" id="WaterBottle"/>
+        <em>Water bottle</em> a 1L pop bottle can work just fine</label>
+        <label for="ToiletPaper">
+        <input type="checkbox" name="ToiletPaper" id="ToiletPaper"/>
+        <em>Toilet paper</em> in a ziplock bag. A small tube of hand sanitizer as well.</label>
+        <label for="Miscellaneous">
+        <input type="checkbox" name="Miscellaneous" id="Miscellaneous"/>
+        <em>Miscellaneous</em> Lipsyl, sunblock and a pair of sunglasses with proper UV protection
+      </label>
+        <label for="Toothbrush">
+        <input type="checkbox" name="Toothbrush" id="Toothbrush"/>
+        <em>Toothbrush & toothpaste.</em> </label>
+      </section>
+    </form>
+  </main>
+    
+  </body>
+  <script>
+
+    const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+    const countChecked = () => {      
+      const checkedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+      return checkedCheckboxes.length;
+    };
+    const status = document.createElement('div');
+    status.setAttribute('id', 'status');
+    status.setAttribute('role', 'status');
+    document.body.appendChild(status)
+    
+    const updateChecked = () => {
+      const checked = countChecked();
+      const all = allCheckboxes.length;
+      status.innerHTML = checked + ' of ' +  all;
+    }
+    updateChecked();
+
+    const reset = document.getElementById('reset');
+    reset.onclick = () => {
+      setTimeout(updateChecked, 0);
+    };
+    allCheckboxes.forEach(checkbox => {
+      checkbox.onchange = updateChecked;
+    });
+  </script>
+</html>
