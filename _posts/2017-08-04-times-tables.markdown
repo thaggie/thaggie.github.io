@@ -9,9 +9,13 @@ date: 2017-08-04 22:55:48
   max-width: 44rem;
 }
 table {
+    padding: 5px;
+    border-radius: 10px;
     text-align: center;
     margin: 0 auto;
     background-color: white;
+    transform: translate(-50%);
+    margin-left: 50%;
 }
 @media print {
   @page {
