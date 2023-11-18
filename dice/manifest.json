@@ -1,0 +1,9 @@
+{
+  "name": "Dice: A 10 sided die",
+  "short_name": "Dice",
+  "icons": [],
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#222",
+  "theme_color": "#fff"
+}
