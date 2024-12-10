@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" style="max-width: 56rem;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gretchen Card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
+    <style>
+        @keyframes spin{0%{transform:rotateY(0deg);}100%{transform:rotateY(180deg);}}
+        @keyframes spinBackwards{0%{transform:rotateY(180deg);}100%{transform:rotateY(0deg);}}
+        @keyframes swapZIndex{0%{z-index:-1;}100%{z-index:1;}}
+        @keyframes backZIndex{0%{z-index:1;}100%{z-index:-1;}}
+        body{display:flex;justify-content:center;align-items:center;height:100vh;width:100vw;margin:0;background-color:aliceblue;perspective:1500px;}
+        input[type=checkbox]{appearance:none;aspect-ratio:6/8;border-radius:2.5rem;max-height:70dvh;height:100%;position:relative;animation:spinBackwards 0.75s ease-in-out forwards;overflow:hidden;box-shadow:0 0 5rem 0.5rem rgb(200, 208, 215);transform-style:preserve-3d;}
+        input[type=checkbox]:checked{animation:spin 0.75s ease-in-out forwards;}
+        input[type=checkbox]::before{content:"";display:flex;justify-content:center;align-items:center;width:100%;height:100%;aspect-ratio:6/8;position:absolute;inset:0;z-index:1;background:url('./gretchen-birthday.png') center/cover no-repeat;}
+        input[type=checkbox]::after{content:"Dear Gretchen,\A\A Happy birthday! We hope you have a wonderful day!\A\A Loads of love from Elliott, Lillian,\A Jen and Tom";white-space:pre-wrap;display:flex;font-size:5vmin;background-color:white;inset:0;position:absolute;padding:2rem;transform:rotateY(180deg);animation:backZIndex 0.75s ease-in-out forwards;font-family:"Delius",cursive;}
+        input[type=checkbox]:checked::after{animation:swapZIndex 0.75s ease-in-out forwards;}
+    </style>
+</head>
+<body>
+    <input type="checkbox">
+</body>
+</html>
